@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" /> 
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader"> 
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="app_name"><value>Standalone</value></data>
+	<!-- General -->
+	<data name="app_name"><value>App Of Many Things</value></data>
+
+	<!-- ActionBar Titles -->
+	<data name="actionbar_options"><value>Options</value></data>
+	<data name="actionbar_add_combatant"><value>Add Combatant</value></data>
+	<data name="actionbar_edit_combatant"><value>Edit Combatant</value></data>
+	<data name="actionbar_combat_tracker"><value>Combat Tracker</value></data>
+	<data name="actionbar_help"><value>Help</value></data>
+
+	<!-- Main Options -->
+	<data name="init_title"><value>Initiative Type</value></data>
+	<data name="init_desc"><value>Descending (Standard)</value></data>
+	<data name="init_asc"><value>Ascending (Greyhawk)</value></data>
+	<data name="init_checkbox"><value>Checkbox (Narrative)</value></data>
+	<data name="multi_npc_title"><value>Multiple NPC Suffix</value></data>
+	<data name="multi_npc_num"><value>Numeric (1,2,3...)</value></data>
+	<data name="multi_npc_alpha"><value>Alphabetic (A,B,C...)</value></data>
+	<data name="multi_npc_custom"><value>Custom</value></data>
+	<data name="multi_npc_custom_hint"><value>Enter Comma Seperated List</value></data>
+
+	<!-- Help -->
+	<data name="help_init_title"><value>Initiative Options</value></data>
+	<data name="help_init_standard"><value>Standard</value></data>
+	<data name="help_init_standard_desc"><value>Combatants roll a D20 and adds their initiative to get there score. Combatants are then sorted in descending order.</value></data>
+	<data name="help_init_greyhawk"><value>GreyHawk</value></data>
+	<data name="help_init_greyhawk_desc"><value>Combatants decide what they are going to do before the turn starts, they then roll dice depending on what actions/movement/bonus actions they will be doing. Combatants are then sorted in ascending order.</value></data>
+	<data name="help_init_narrative"><value>Narrative</value></data>
+	<data name="help_init_narrative_desc"><value>There is no initiative roll or turn order, combatant turns happen when players want them to and when makes the most narrative sense. Once a combatant has done their turn they can not do so again until all other combatants have gone.</value></data>
+	<data name="help_click_here"><value>Click here to see detailed rules</value></data>
+	<data name="help_multi_title"><value>Multiple NPC Suffix Options</value></data>
+	<data name="help_multi_desc"><value>When you choose to create multiple NPCs of the same kind we add extra text to the end to help distinguish between them. You can choose to either have it be numbered, alphabetic, or enter a custom comma seperated list that the app will go through.</value></data>
+	<data name="help_greyhawk_link"><value>http://media.wizards.com/2017/dnd/downloads/UAGreyhawkInitiative.pdf</value></data>
+	<data name="help_narrative_link"><value>https://lootthebody.wordpress.com/2017/08/04/the-art-of-starting-a-fight-narrative-initiative-in-dd/</value></data>
+	
+</root>

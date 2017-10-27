@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include
+            layout="@layout/top_toolbar" />
+        <LinearLayout
+            style="@style/OptionsSectionLayout"
+            android:background="@color/secondary_color">
+            <TextView
+                style="@style/AddEditCombatantTextView"
+                android:id="@+id/text_init_title" />
+            <RadioGroup
+                style="@style/OptionRadioGroup"
+                android:id="@+id/radio_desc_asc">
+                <RadioButton
+                    style="@style/OptionRadioButton"
+                    android:id="@+id/radio_desc"
+                    android:checked="true" />
+                <RadioButton
+                    style="@style/OptionRadioButton"
+                    android:id="@+id/radio_asc" />
+                <RadioButton
+                    style="@style/OptionRadioButton"
+                    android:id="@+id/radio_checkbox" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            style="@style/OptionsSectionLayout"
+            android:background="@color/white">
+            <TextView
+                style="@style/AddEditCombatantTextView"
+                android:id="@+id/text_multi_title" />
+            <RadioGroup
+                style="@style/OptionRadioGroup"
+                android:id="@+id/radio_num_alpha_custom">
+                <RadioButton
+                    style="@style/OptionRadioButton"
+                    android:id="@+id/radio_num"
+                    android:checked="true" />
+                <RadioButton
+                    style="@style/OptionRadioButton"
+                    android:id="@+id/radio_alpha" />
+                <RadioButton
+                    style="@style/OptionRadioButton"
+                    android:id="@+id/radio_custom" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            style="@style/OptionsSectionLayout"
+            android:background="@color/white"
+            android:id="@+id/multi_npc_custom_layout">
+            <EditText
+                style="@style/AddEditCombatantEditText"
+                android:id="@+id/multi_npc_custom"
+                android:inputType="text" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
