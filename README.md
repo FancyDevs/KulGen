@@ -1,1 +1,1 @@
-# KulGen
+# KulGen - App Of Many Things

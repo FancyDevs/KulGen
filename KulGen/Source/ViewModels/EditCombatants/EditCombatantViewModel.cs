@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using KulGen.Core;
 using KulGen.DataModels;
+using KulGen.Resources;
 using KulGen.ViewModels.CombatTracker;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.FieldBinding;
@@ -19,6 +20,17 @@ namespace KulGen.ViewModels.EditCombatants
 
 		public ICommand UpdateClicked => new MvxCommand (DoUpdate);
 		public ICommand DeleteClicked => new MvxCommand (DoDelete);
+
+		public string Title => AppStrings.edit_title;
+		public string PlayerText => AppStrings.add_edit_player;
+		public string NpcText => AppStrings.add_edit_npc;
+		public string NameText => AppStrings.add_edit_name;
+		public string InitText => AppStrings.add_edit_init;
+		public string MaxHpText => AppStrings.add_edit_max_hp;
+		public string PercText => AppStrings.add_edit_perc;
+		public string AcText => AppStrings.add_edit_ac;
+		public string NumberText => AppStrings.add_edit_number;
+		public string PlayerNameText => AppStrings.add_edit_player_name;
 
 		int combatantId;
 		int health;

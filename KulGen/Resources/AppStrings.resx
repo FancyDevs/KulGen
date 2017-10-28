@@ -62,5 +62,20 @@
 	<data name="help_multi_desc"><value>When you choose to create multiple NPCs of the same kind we add extra text to the end to help distinguish between them. You can choose to either have it be numbered, alphabetic, or enter a custom comma seperated list that the app will go through.</value></data>
 	<data name="help_greyhawk_link"><value>http://media.wizards.com/2017/dnd/downloads/UAGreyhawkInitiative.pdf</value></data>
 	<data name="help_narrative_link"><value>https://lootthebody.wordpress.com/2017/08/04/the-art-of-starting-a-fight-narrative-initiative-in-dd/</value></data>
-	
+
+	<!-- Combat Tracker -->
+	<data name="ct_title"><value>Combat Tracker</value></data>
+
+	<!-- Add / Edit Combatant -->
+	<data name="add_title"><value>Add Combatant</value></data>
+	<data name="edit_title"><value>Edit Combatant</value></data>
+	<data name="add_edit_player"><value>Player</value></data>
+	<data name="add_edit_npc"><value>NPC</value></data>
+	<data name="add_edit_name"><value>Combatant Name</value></data>
+	<data name="add_edit_init"><value>Initiative</value></data>
+	<data name="add_edit_max_hp"><value>Max Health</value></data>
+	<data name="add_edit_perc"><value>Perception</value></data>
+	<data name="add_edit_ac"><value>Armor Class</value></data>
+	<data name="add_edit_number"><value>Number To Create</value></data>
+	<data name="add_edit_player_name"><value>Player Name</value></data>
 </root>

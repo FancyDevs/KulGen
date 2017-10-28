@@ -11,6 +11,7 @@ using KulGen.Source.ViewModels.Options;
 using KulGen.Source.Util;
 using SQLite;
 using KulGen.Source.ViewModels.Help;
+using KulGen.Resources;
 
 namespace KulGen.ViewModels.CombatTracker
 {
@@ -25,6 +26,8 @@ namespace KulGen.ViewModels.CombatTracker
 
 		public readonly INCList<CombatListItemModel> CombatantList = new NCList<CombatListItemModel> ();
 		public readonly INC<bool> IsCheckBoxInitiative = new NC<bool> ();
+
+		public string Title => AppStrings.ct_title;
 
 		public CombatTrackerViewModel (ILocalSettings settings) : base (settings)
 		{

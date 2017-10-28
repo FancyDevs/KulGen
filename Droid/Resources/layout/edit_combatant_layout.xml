@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:background="@color/secondary_color">
         <TextView
             style="@style/AddEditCombatantTextView"
-            android:text="Combatant Name" />
+            android:id="@+id/edit_text_character_name" />
         <EditText
             style="@style/AddEditCombatantEditText"
             android:id="@+id/edit_character_name"
@@ -26,7 +26,7 @@
             android:layout_weight="1">
             <TextView
                 style="@style/AddEditCombatantTextView"
-                android:text="Initiative" />
+                android:id="@+id/edit_text_initiative" />
             <EditText
                 style="@style/AddEditCombatantEditText.Stat"
                 android:id="@+id/edit_initiative" />
@@ -36,7 +36,7 @@
             android:layout_weight="1">
             <TextView
                 style="@style/AddEditCombatantTextView"
-                android:text="Max Health" />
+                android:id="@+id/edit_text_max_health" />
             <EditText
                 style="@style/AddEditCombatantEditText.Stat"
                 android:id="@+id/edit_max_health"
@@ -51,7 +51,7 @@
             android:layout_weight="1">
             <TextView
                 style="@style/AddEditCombatantTextView"
-                android:text="Perception" />
+                android:id="@+id/edit_text_perception" />
             <EditText
                 style="@style/AddEditCombatantEditText.Stat"
                 android:id="@+id/edit_perception" />
@@ -61,7 +61,7 @@
             android:layout_weight="1">
             <TextView
                 style="@style/AddEditCombatantTextView"
-                android:text="Armor Class" />
+                android:id="@+id/edit_text_armor" />
             <EditText
                 style="@style/AddEditCombatantEditText.Stat"
                 android:id="@+id/edit_armor" />
@@ -73,7 +73,7 @@
         android:background="@color/white">
         <TextView
             style="@style/AddEditCombatantTextView"
-            android:text="Player Name" />
+            android:id="@+id/edit_text_player_name" />
         <EditText
             style="@style/AddEditCombatantEditText"
             android:id="@+id/edit_player_name"

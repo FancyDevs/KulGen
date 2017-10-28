@@ -208,5 +208,77 @@ namespace KulGen.Resources {
                 return ResourceManager.GetString("help_narrative_link", resourceCulture);
             }
         }
+        
+        internal static string ct_title {
+            get {
+                return ResourceManager.GetString("ct_title", resourceCulture);
+            }
+        }
+        
+        internal static string add_title {
+            get {
+                return ResourceManager.GetString("add_title", resourceCulture);
+            }
+        }
+        
+        internal static string edit_title {
+            get {
+                return ResourceManager.GetString("edit_title", resourceCulture);
+            }
+        }
+        
+        internal static string add_edit_player {
+            get {
+                return ResourceManager.GetString("add_edit_player", resourceCulture);
+            }
+        }
+        
+        internal static string add_edit_npc {
+            get {
+                return ResourceManager.GetString("add_edit_npc", resourceCulture);
+            }
+        }
+        
+        internal static string add_edit_name {
+            get {
+                return ResourceManager.GetString("add_edit_name", resourceCulture);
+            }
+        }
+        
+        internal static string add_edit_init {
+            get {
+                return ResourceManager.GetString("add_edit_init", resourceCulture);
+            }
+        }
+        
+        internal static string add_edit_max_hp {
+            get {
+                return ResourceManager.GetString("add_edit_max_hp", resourceCulture);
+            }
+        }
+        
+        internal static string add_edit_perc {
+            get {
+                return ResourceManager.GetString("add_edit_perc", resourceCulture);
+            }
+        }
+        
+        internal static string add_edit_ac {
+            get {
+                return ResourceManager.GetString("add_edit_ac", resourceCulture);
+            }
+        }
+        
+        internal static string add_edit_number {
+            get {
+                return ResourceManager.GetString("add_edit_number", resourceCulture);
+            }
+        }
+        
+        internal static string add_edit_player_name {
+            get {
+                return ResourceManager.GetString("add_edit_player_name", resourceCulture);
+            }
+        }
     }
 }

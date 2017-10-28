@@ -37,7 +37,14 @@ namespace KulGen.Droid.Views.EditCombatants
 			editArmorClass = FindViewById<EditText> (Resource.Id.edit_armor);
 			layoutPlayerName = FindViewById<LinearLayout> (Resource.Id.layout_edit_player_name);
 
-			SetupActionBar ("Edit Combatant");
+			FindViewById<TextView> (Resource.Id.edit_text_character_name).Text = ViewModel.NameText;
+			FindViewById<TextView> (Resource.Id.edit_text_initiative).Text = ViewModel.InitText;
+			FindViewById<TextView> (Resource.Id.edit_text_max_health).Text = ViewModel.MaxHpText;
+			FindViewById<TextView> (Resource.Id.edit_text_perception).Text = ViewModel.PercText;
+			FindViewById<TextView> (Resource.Id.edit_text_armor).Text = ViewModel.InitText;
+			FindViewById<TextView> (Resource.Id.edit_text_player_name).Text = ViewModel.PlayerNameText;
+
+			SetupActionBar (ViewModel.Title);
 		}
 
 		protected override void SetupBindings (MvxFluentBindingDescriptionSet<EditCombatantView, EditCombatantViewModel> bindingSet)

@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using KulGen.Core;
 using KulGen.DataModels;
+using KulGen.Resources;
 using KulGen.Source.Util;
 using KulGen.ViewModels.CombatTracker;
 using MvvmCross.Core.ViewModels;
@@ -22,6 +23,17 @@ namespace KulGen.ViewModels.AddCombatants
 		public readonly INC<bool> IsPlayer = new NC<bool> (false);
 
 		public ICommand AddClicked => new MvxCommand (DoAdd);
+
+		public string Title => AppStrings.add_title;
+		public string PlayerText => AppStrings.add_edit_player;
+		public string NpcText => AppStrings.add_edit_npc;
+		public string NameText => AppStrings.add_edit_name;
+		public string InitText => AppStrings.add_edit_init;
+		public string MaxHpText => AppStrings.add_edit_max_hp;
+		public string PercText => AppStrings.add_edit_perc;
+		public string AcText => AppStrings.add_edit_ac;
+		public string NumberText => AppStrings.add_edit_number;
+		public string PlayerNameText => AppStrings.add_edit_player_name;
 
 		public AddCombatantViewModel (ILocalSettings settings) : base (settings) { }
 

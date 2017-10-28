@@ -37,7 +37,7 @@ namespace KulGen.Droid.Views.CombatTracker
 
 			combatantList.Adapter = new CombatantAdapter (this, BindingContext as IMvxAndroidBindingContext);
 
-			SetupActionBar ("Combat Tracker");
+			SetupActionBar (ViewModel.Title);
 		}
 
 		protected override void SetupBindings (MvvmCross.Binding.BindingContext.MvxFluentBindingDescriptionSet<CombatTrackerView, CombatTrackerViewModel> bindingSet)

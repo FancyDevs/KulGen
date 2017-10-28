@@ -44,7 +44,18 @@ namespace KulGen.Droid.Views.AddCombatants
 			layoutPlayerName = FindViewById<LinearLayout> (Resource.Id.layout_add_player_name);
 			layoutCreateNumber = FindViewById<LinearLayout> (Resource.Id.layout_add_create_number);
 
-			SetupActionBar ("Add Combatant");
+			FindViewById<TextView> (Resource.Id.add_text_combatant_name).Text = ViewModel.NameText;
+			FindViewById<TextView> (Resource.Id.add_text_initiative).Text = ViewModel.InitText;
+			FindViewById<TextView> (Resource.Id.add_text_max_health).Text = ViewModel.MaxHpText;
+			FindViewById<TextView> (Resource.Id.add_text_perception).Text = ViewModel.PercText;
+			FindViewById<TextView> (Resource.Id.add_text_armor).Text = ViewModel.InitText;
+			FindViewById<TextView> (Resource.Id.add_text_create_number).Text = ViewModel.NumberText;
+			FindViewById<TextView> (Resource.Id.add_text_player_name).Text = ViewModel.PlayerNameText;
+
+			radioPlayer.Text = ViewModel.PlayerText;
+			radioNpc.Text = ViewModel.NpcText;
+
+			SetupActionBar (ViewModel.Title);
 
 			radioNpc.Click += OnNpcClicked;
 			radioPlayer.Click += OnPlayerClicked;
