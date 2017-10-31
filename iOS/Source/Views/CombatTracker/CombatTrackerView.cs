@@ -1,25 +1,29 @@
 ﻿using System;
-using KulGen.iOS.Source.Adapters;
 using KulGen.ViewModels.CombatTracker;
-using MvvmCross.Binding.BindingContext;
-using Shire.iOS.Views;
+using MvvmCross.iOS.Views;
+using MvvmCross.iOS.Views.Presenters.Attributes;
 using UIKit;
 
 namespace KulGen.iOS.Source.Views.CombatTracker
 {
-	public partial class CombatTrackerView : BaseViewController<CombatTrackerView, CombatTrackerViewModel>
-	{
-		TypedCellMvxSimpleTableViewSource<CombatTrackerCell> tableSource;
+    [MvxRootPresentation(WrapInNavigationController = true)]
+    public partial class CombatTrackerView : MvxViewController<CombatTrackerViewModel>
+    {
+        public CombatTrackerView() : base("CombatTrackerView", null)
+        {
+        }
 
-		protected override void OnInitializeComponents ()
-		{
-			base.OnInitializeComponents ();
-		}
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            // Perform any additional setup after loading the view, typically from a nib.
+        }
 
-		protected override void SetupBindings (MvxFluentBindingDescriptionSet<CombatTrackerView, CombatTrackerViewModel> bindingSet)
-		{
-			
-		}
-	}
+        public override void DidReceiveMemoryWarning()
+        {
+            base.DidReceiveMemoryWarning();
+            // Release any cached data, images, etc that aren't in use.
+        }
+    }
 }
 

@@ -7,8 +7,13 @@ namespace KulGen.Core
 	{
 		public static async Task SharedSetup(string dbPath)
 		{
-			var settings = await LocalSettings.LoadLocalSettings (dbPath);
-			Mvx.RegisterSingleton<ILocalSettings> (settings);
+            try{
+                var settings = await LocalSettings.LoadLocalSettings (dbPath);
+                Mvx.RegisterSingleton<ILocalSettings> (settings);
+            }
+            catch (System.Exception ex)
+            {
+            }
 		}
 	}
 }

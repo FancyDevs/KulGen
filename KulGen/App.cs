@@ -13,7 +13,7 @@ namespace KulGen
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<CombatTrackerViewModel>();
+            RegisterNavigationServiceAppStart<CombatTrackerViewModel>();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using MvvmCross.Binding.BindingContext;
+﻿using System;
+using Foundation;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Views;
 
@@ -6,6 +8,18 @@ namespace KulGen.iOS.Source.Views
 {
 	public class BaseViewController : MvxViewController
 	{
+        public BaseViewController() {
+            
+        }
+
+        public BaseViewController(string nibName, NSBundle bundle) : base (nibName, bundle) {
+
+        }
+
+        public BaseViewController(IntPtr handle) : base(handle) {
+
+        }
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -18,6 +32,16 @@ namespace KulGen.iOS.Source.Views
 
 	public abstract class BaseViewController<TViewModel> : BaseViewController where TViewModel : class, IMvxViewModel
 	{
+        public BaseViewController()
+        {
+
+        }
+
+        public BaseViewController(string nibName, NSBundle bundle) : base(nibName, bundle)
+        {
+
+        }
+
 		public new TViewModel ViewModel
 		{
 			get => (TViewModel)base.ViewModel;
@@ -29,6 +53,21 @@ namespace KulGen.iOS.Source.Views
 		where TViewModel : class, IMvxViewModel
 		where TView : class, IMvxBindingContextOwner
 	{
+        public BaseViewController()
+        {
+
+        }
+
+        public BaseViewController(IntPtr handle) : base(handle)
+        {
+
+        }
+
+        public BaseViewController(string nibName, NSBundle bundle) : base(nibName, bundle)
+        {
+
+        }
+
 		protected override void SetupView ()
 		{
 			base.SetupView ();

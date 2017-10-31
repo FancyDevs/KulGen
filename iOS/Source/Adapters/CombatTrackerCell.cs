@@ -5,7 +5,7 @@ using MvvmCross.Binding.iOS.Views;
 
 namespace KulGen.iOS.Source.Adapters
 {
-	public class CombatTrackerCell : MvxTableViewCell
+    public partial class CombatTrackerCell : MvxTableViewCell
 	{
 		public override void AwakeFromNib ()
 		{

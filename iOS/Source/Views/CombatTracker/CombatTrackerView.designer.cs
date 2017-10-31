@@ -11,11 +11,11 @@ using UIKit;
 
 namespace KulGen.iOS.Source.Views.CombatTracker
 {
-	[Register ("CombatTrackerView")]
-	partial class CombatTrackerView
-	{
-		void ReleaseDesignerOutlets ()
-		{
-		}
-	}
+    [Register("CombatTrackerView")]
+    partial class CombatTrackerView
+    {
+        void ReleaseDesignerOutlets()
+        {
+        }
+    }
 }

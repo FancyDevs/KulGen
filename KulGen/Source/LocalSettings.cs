@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using KulGen.DataModels;
 using KulGen.Source.Util;
@@ -43,8 +45,13 @@ namespace KulGen.Core
 
 		void CreateDatabase (string dbPath)
 		{
-			SQLiteDatabase = new SQLiteConnection (dbPath);
-			SQLiteDatabase.CreateTable<Combatant> ();
+            try{
+                SQLiteDatabase = new SQLiteConnection(dbPath);
+                SQLiteDatabase.CreateTable<Combatant>();    
+            } catch(Exception ex) {
+                Debug.WriteLine(ex.Message);
+            }
+			
 		}
 
 		void GetPersistantValues ()

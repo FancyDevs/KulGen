@@ -33,7 +33,17 @@ namespace KulGen.iOS
 			base.InitializeIoC ();
 			CurrentPlatform.Init ();
 
-			string dbPath = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.Personal), "appofmanythings.db3");
+			//string dbPath = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.Personal), "appofmanythings.db3");
+
+            string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            string libFolder = Path.Combine(docFolder, "..", "Library", "Databases");
+
+            if (!Directory.Exists(libFolder))
+            {
+                Directory.CreateDirectory(libFolder);
+            }
+
+            string dbPath = Path.Combine(libFolder, "appofmanythings.db3");
 
 			await Core.Setup.SharedSetup (dbPath);
 
