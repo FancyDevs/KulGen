@@ -1,19 +1,20 @@
 // WARNING
 //
-// This file has been generated automatically by Visual Studio to store outlets and
-// actions made in the UI designer. If it is removed, they will be lost.
-// Manual changes to this file may not be handled correctly.
+// This file has been generated automatically by Visual Studio from the outlets and
+// actions declared in your storyboard file.
+// Manual changes to this file will not be maintained.
 //
 using Foundation;
+using System;
 using System.CodeDom.Compiler;
 
 namespace KulGen.iOS.Source.Adapters
 {
-    [Register ("CombatTrackerCell")]
-    partial class CombatTrackerCell
+    [Register ("CombatCell")]
+    partial class CombatCell
     {
         [Outlet]
-        UIKit.UILabel lblAmorClass { get; set; }
+        UIKit.UILabel lblArmorClass { get; set; }
 
         [Outlet]
         UIKit.UILabel lblCharacterName { get; set; }
@@ -29,12 +30,12 @@ namespace KulGen.iOS.Source.Adapters
 
         [Outlet]
         UIKit.UILabel lblPlayerName { get; set; }
-        
+
         void ReleaseDesignerOutlets ()
         {
-            if (lblAmorClass != null) {
-                lblAmorClass.Dispose ();
-                lblAmorClass = null;
+            if (lblArmorClass != null) {
+                lblArmorClass.Dispose ();
+                lblArmorClass = null;
             }
 
             if (lblCharacterName != null) {

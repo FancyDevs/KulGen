@@ -228,10 +228,6 @@
       <DependentUpon>MainOptionsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Controls\TypedCellMvxSimpleTableViewSource.cs" />
-    <Compile Include="Source\Adapters\CombatTrackerCell.cs" />
-    <Compile Include="Source\Adapters\CombatTrackerCell.designer.cs">
-      <DependentUpon>CombatTrackerCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="Bootstrap\FieldBindingPluginBootstrap.cs" />
     <Compile Include="CustomMvxTouch\KulGIosViewPresenter.cs" />
@@ -240,15 +236,19 @@
       <DependentUpon>CombatTrackerView.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Source\Adapters\CombatCell.cs" />
+    <Compile Include="Source\Adapters\CombatCell.designer.cs">
+      <DependentUpon>CombatCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Source\Views\AddCombatants\AddCombatantView.xib" />
     <InterfaceDefinition Include="Source\Views\EditCombatants\EditCombatantView.xib" />
     <InterfaceDefinition Include="Source\Views\Help\MainHelpView.xib" />
     <InterfaceDefinition Include="Source\Views\Options\MainOptionsView.xib" />
-    <InterfaceDefinition Include="Source\Adapters\CombatTrackerCell.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="Source\Views\CombatTracker\CombatTrackerView.xib" />
+    <InterfaceDefinition Include="Source\Adapters\CombatCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\appofmanythings.db3" />

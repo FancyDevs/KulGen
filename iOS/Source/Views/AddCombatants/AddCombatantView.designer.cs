@@ -7,15 +7,75 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
-using UIKit;
 
 namespace KulGen.iOS.Source.Views.AddCombatants
 {
     [Register ("AddCombatantView")]
     partial class AddCombatantView
     {
+        [Outlet]
+        UIKit.UISegmentedControl sgmPlayer { get; set; }
+
+
+        [Outlet]
+        UIKit.UITextField txtAmorClass { get; set; }
+
+
+        [Outlet]
+        UIKit.UITextField txtCombatant { get; set; }
+
+
+        [Outlet]
+        UIKit.UITextField txtCreateNumber { get; set; }
+
+
+        [Outlet]
+        UIKit.UITextField txtHealth { get; set; }
+
+
+        [Outlet]
+        UIKit.UITextField txtInitiative { get; set; }
+
+
+        [Outlet]
+        UIKit.UITextField txtPassiverPerception { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (sgmPlayer != null) {
+                sgmPlayer.Dispose ();
+                sgmPlayer = null;
+            }
+
+            if (txtAmorClass != null) {
+                txtAmorClass.Dispose ();
+                txtAmorClass = null;
+            }
+
+            if (txtCombatant != null) {
+                txtCombatant.Dispose ();
+                txtCombatant = null;
+            }
+
+            if (txtCreateNumber != null) {
+                txtCreateNumber.Dispose ();
+                txtCreateNumber = null;
+            }
+
+            if (txtHealth != null) {
+                txtHealth.Dispose ();
+                txtHealth = null;
+            }
+
+            if (txtInitiative != null) {
+                txtInitiative.Dispose ();
+                txtInitiative = null;
+            }
+
+            if (txtPassiverPerception != null) {
+                txtPassiverPerception.Dispose ();
+                txtPassiverPerception = null;
+            }
         }
     }
 }

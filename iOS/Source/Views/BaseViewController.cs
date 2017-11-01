@@ -49,16 +49,11 @@ namespace KulGen.iOS.Source.Views
 		}
 	}
 
-	public abstract class BaseViewController<TView, TViewModel> : BaseViewController 
+    public abstract class BaseViewController<TView, TViewModel> : BaseViewController <TViewModel>
 		where TViewModel : class, IMvxViewModel
 		where TView : class, IMvxBindingContextOwner
 	{
         public BaseViewController()
-        {
-
-        }
-
-        public BaseViewController(IntPtr handle) : base(handle)
         {
 
         }
