@@ -23,7 +23,6 @@ namespace KulGen.Droid.Views.EditCombatants
 		EditText editPassivePerception;
 		EditText editArmorClass;
 		LinearLayout layoutPlayerName;
-		LinearLayout layoutCreateNumber;
 
 		protected override int LayoutResId => Resource.Layout.edit_combatant_layout;
 
@@ -41,7 +40,7 @@ namespace KulGen.Droid.Views.EditCombatants
 			FindViewById<TextView> (Resource.Id.edit_text_initiative).Text = ViewModel.InitText;
 			FindViewById<TextView> (Resource.Id.edit_text_max_health).Text = ViewModel.MaxHpText;
 			FindViewById<TextView> (Resource.Id.edit_text_perception).Text = ViewModel.PercText;
-			FindViewById<TextView> (Resource.Id.edit_text_armor).Text = ViewModel.InitText;
+			FindViewById<TextView> (Resource.Id.edit_text_armor).Text = ViewModel.AcText;
 			FindViewById<TextView> (Resource.Id.edit_text_player_name).Text = ViewModel.PlayerNameText;
 
 			SetupActionBar (ViewModel.Title);

@@ -33,7 +33,6 @@ namespace KulGen.Droid.Adapters
 
 		TextView TextUpdate;
 		TextView TextSetMaxHealth;
-		TextView TextKill;
 		TextView TextInitiative;
 		TextView TextCharacterName;
 		TextView TextPlayerName;

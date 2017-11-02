@@ -48,7 +48,7 @@ namespace KulGen.Droid.Views.AddCombatants
 			FindViewById<TextView> (Resource.Id.add_text_initiative).Text = ViewModel.InitText;
 			FindViewById<TextView> (Resource.Id.add_text_max_health).Text = ViewModel.MaxHpText;
 			FindViewById<TextView> (Resource.Id.add_text_perception).Text = ViewModel.PercText;
-			FindViewById<TextView> (Resource.Id.add_text_armor).Text = ViewModel.InitText;
+			FindViewById<TextView> (Resource.Id.add_text_armor).Text = ViewModel.AcText;
 			FindViewById<TextView> (Resource.Id.add_text_create_number).Text = ViewModel.NumberText;
 			FindViewById<TextView> (Resource.Id.add_text_player_name).Text = ViewModel.PlayerNameText;
 
