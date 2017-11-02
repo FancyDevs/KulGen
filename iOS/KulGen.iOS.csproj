@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -198,6 +197,7 @@
     <Folder Include="Source\Controls\" />
     <Folder Include="Source\Adapters\" />
     <Folder Include="CustomMvxTouch\" />
+    <Folder Include="Source\Converters\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -228,8 +228,8 @@
       <DependentUpon>MainOptionsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Controls\TypedCellMvxSimpleTableViewSource.cs" />
-    <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="Bootstrap\FieldBindingPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="CustomMvxTouch\KulGIosViewPresenter.cs" />
     <Compile Include="Source\Views\CombatTracker\CombatTrackerView.cs" />
     <Compile Include="Source\Views\CombatTracker\CombatTrackerView.designer.cs">
@@ -240,6 +240,7 @@
     <Compile Include="Source\Adapters\CombatCell.designer.cs">
       <DependentUpon>CombatCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\Converters\VisibilityToValue.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Source\Views\AddCombatants\AddCombatantView.xib" />

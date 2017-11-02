@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Generic;
 using Foundation;
+using KulGen.Adapters;
 using KulGen.iOS.Source.Adapters;
 using KulGen.ViewModels.CombatTracker;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.iOS.Views;
+using MvvmCross.FieldBinding;
 using MvvmCross.iOS.Views;
 using MvvmCross.iOS.Views.Presenters.Attributes;
 using UIKit;
@@ -69,10 +72,41 @@ namespace KulGen.iOS.Source.Views.CombatTracker
         partial void OptionsAction(Foundation.NSObject sender) {
             viewMenu.Hidden = true;
             ViewModel.GoToOptions.Execute(null);
+
         }
     }
 
-    public class CombatantTableSource : MvxTableViewSource     {         private static readonly NSString cellIdentifier = new NSString("CombatCell");          public CombatantTableSource(UITableView tableView) : base(tableView)
-        {             tableView.RegisterNibForCellReuse(UINib.FromName(cellIdentifier, NSBundle.MainBundle), cellIdentifier);         }          protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)         {             CombatCell cell = (CombatCell)tableView.DequeueReusableCell(cellIdentifier, indexPath);             return cell;         }     }
+    public class CombatantTableSource : MvxTableViewSource     {
+        private readonly int expandedHeight = 150;
+        private readonly int collapsedHeight = 55;         private static readonly NSString cellIdentifier = new NSString("CombatCell");
+        Dictionary<int, bool> expandedData;          public CombatantTableSource(UITableView tableView) : base(tableView)
+        {
+            expandedData = new Dictionary<int, bool>();             tableView.RegisterNibForCellReuse(UINib.FromName(cellIdentifier, NSBundle.MainBundle), cellIdentifier);         }          protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)         {
+            var combatModel = (CombatListItemModel)item;
+            if (expandedData.ContainsKey(indexPath.Row))
+                expandedData[indexPath.Row] = combatModel.ShowCombatWindow.Value;
+            else
+                expandedData.Add(indexPath.Row, (combatModel.ShowCombatWindow.Value));
+                                              CombatCell cell = (CombatCell)tableView.DequeueReusableCell(cellIdentifier, indexPath);
+            cell.TableView = tableView;
+            cell.SelectionStyle = UITableViewCellSelectionStyle.None;
+
+            if (indexPath.Row % 2 == 1)
+                cell.BackgroundColor = UIColor.FromRGB(240, 240, 240);
+            else 
+                cell.BackgroundColor = UIColor.White;             return cell;         }
+
+        public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+        {
+            if (expandedData[indexPath.Row])
+                return expandedHeight;
+
+            return collapsedHeight;
+        }
+
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+            base.RowSelected(tableView, indexPath);
+        }     }
 }
 

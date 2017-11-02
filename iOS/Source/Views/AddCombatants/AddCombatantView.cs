@@ -23,6 +23,15 @@ namespace KulGen.iOS.Source.Views.AddCombatants
             });
 
             NavigationItem.RightBarButtonItem = addItem;
+
+            smgType.ValueChanged += (sender, e) => {
+                if (smgType.SelectedSegment == 0)
+                    ViewModel.IsPlayer.Value = true;
+                else
+                    ViewModel.IsPlayer.Value = false;
+            };
+
+            smgType.SelectedSegment = 1;
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -34,14 +43,13 @@ namespace KulGen.iOS.Source.Views.AddCombatants
         protected override void SetupBindings(MvxFluentBindingDescriptionSet<AddCombatantView, AddCombatantViewModel> bindingSet)
         {
             bindingSet.Bind(txtCombatant).For(x => x.Text).To(vm => vm.CharacterName);
-            //bindingSet.Bind(editPlayerName).For(x => x.Text).To(vm => vm.PlayerName);
-            //bindingSet.Bind(layoutPlayerName).For("Visibility").To(vm => vm.IsPlayer).WithConversion("Visibility");
+            bindingSet.Bind(txtPlayerName).For(x => x.Text).To(vm => vm.PlayerName);
+            bindingSet.Bind(viewPlayer).For("Hidden").To(vm => vm.IsPlayer).WithConversion("Visibility");
             bindingSet.Bind(txtInitiative).For(x => x.Text).To(vm => vm.Initiative).WithConversion("StringToIntConverter");
             bindingSet.Bind(txtHealth).For(x => x.Text).To(vm => vm.Health).WithConversion("StringToIntConverter");
             bindingSet.Bind(txtPassiverPerception).For(x => x.Text).To(vm => vm.PassivePerception).WithConversion("StringToIntConverter");
             bindingSet.Bind(txtAmorClass).For(x => x.Text).To(vm => vm.ArmorClass).WithConversion("StringToIntConverter");
             bindingSet.Bind(txtCreateNumber).For(x => x.Text).To(vm => vm.CreateNumber).WithConversion("StringToIntConverter");
-            //bindingSet.Bind(layoutCreateNumber).For("Visibility").To(vm => vm.IsPlayer).WithConversion("InvertedVisibility");
         }
     }
 }
