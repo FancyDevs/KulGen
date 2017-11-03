@@ -184,6 +184,15 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_main40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_main60png.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_main58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_main87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_main80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_main120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_main180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_main20.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_main29.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -253,6 +262,13 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\appofmanythings.db3" />
+    <BundleResource Include="Resources\ic_combat_2.png" />
+    <BundleResource Include="Resources\ic_combat.png" />
+    <BundleResource Include="Resources\ic_fab_add_circle.png" />
+    <BundleResource Include="Resources\ic_fab_uncheck.png" />
+    <BundleResource Include="Resources\ic_increase_health.png" />
+    <BundleResource Include="Resources\ic_toolbar.png" />
+    <BundleResource Include="Resources\icon_main.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

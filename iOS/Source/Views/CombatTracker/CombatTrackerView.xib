@@ -26,9 +26,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXf-Jm-agm">
-                    <rect key="frame" x="325" y="617" width="30" height="30"/>
-                    <state key="normal" title="Add"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXf-Jm-agm">
+                    <rect key="frame" x="310" y="602" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="aSR-Uz-d6y"/>
+                        <constraint firstAttribute="height" constant="45" id="ui8-Uo-zn3"/>
+                    </constraints>
+                    <state key="normal" image="ic_fab_add_circle.png"/>
                     <connections>
                         <action selector="AddCombatantAction:" destination="-1" eventType="touchUpInside" id="2Zw-Eb-5YV"/>
                     </connections>
@@ -98,4 +102,7 @@
             <point key="canvasLocation" x="25.5" y="52.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_fab_add_circle.png" width="36" height="36"/>
+    </resources>
 </document>

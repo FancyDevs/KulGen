@@ -71,13 +71,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwP-Ut-bJm">
-                        <rect key="frame" x="293" y="7" width="25" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwP-Ut-bJm">
+                        <rect key="frame" x="293" y="13" width="25" height="26"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="1aC-Zd-BvF"/>
-                            <constraint firstAttribute="height" constant="30" id="qM0-Pp-Ipy"/>
+                            <constraint firstAttribute="height" constant="26" id="qM0-Pp-Ipy"/>
                         </constraints>
-                        <state key="normal" title="edt"/>
+                        <state key="normal" image="ic_combat.png"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NPC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOI-aB-Cza">
                         <rect key="frame" x="97" y="30" width="25.5" height="15"/>
@@ -176,7 +176,6 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Uxf-wU-ByJ" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" id="1il-fC-lkw"/>
-                    <constraint firstItem="iwP-Ut-bJm" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="7" id="2Nl-Cp-8oe"/>
                     <constraint firstItem="IZp-Py-Bma" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="8" id="3Bb-b0-JC7"/>
                     <constraint firstItem="DOm-15-gzl" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="8" id="6qF-OQ-uho"/>
                     <constraint firstAttribute="trailingMargin" secondItem="IZp-Py-Bma" secondAttribute="trailing" constant="30" id="82z-Ub-jlM"/>
@@ -184,6 +183,7 @@
                     <constraint firstItem="yNr-L4-SsJ" firstAttribute="centerX" secondItem="Vm9-qX-P6b" secondAttribute="centerX" id="CLV-4Z-l0w"/>
                     <constraint firstItem="Vm9-qX-P6b" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="8" id="I8C-1Y-CJi"/>
                     <constraint firstItem="Kw4-Tu-9xX" firstAttribute="top" secondItem="IZp-Py-Bma" secondAttribute="bottom" constant="7.5" id="JNB-Lu-OBk"/>
+                    <constraint firstItem="iwP-Ut-bJm" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="13" id="MZs-6p-VWL"/>
                     <constraint firstItem="yfF-gw-Heo" firstAttribute="top" secondItem="DvZ-RR-2VI" secondAttribute="bottom" constant="7.5" id="OUH-2B-WWg"/>
                     <constraint firstItem="DOm-15-gzl" firstAttribute="leading" secondItem="DvZ-RR-2VI" secondAttribute="trailing" constant="20" id="PZD-sM-h5t"/>
                     <constraint firstItem="dP8-jX-yE5" firstAttribute="leading" secondItem="Vm9-qX-P6b" secondAttribute="trailing" constant="2" id="S6b-BQ-3a8"/>
@@ -227,4 +227,7 @@
             <point key="canvasLocation" x="54" y="110"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_combat.png" width="60" height="63"/>
+    </resources>
 </document>
