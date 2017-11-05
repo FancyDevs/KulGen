@@ -32,7 +32,7 @@ namespace KulGen.Droid
 
 			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"appofmanythings.db3");
 
-			await Core.Setup.SharedSetup (dbPath);
+			await Core.CommonSetup.SharedSetup (dbPath);
 
 			SetupComplete.Value = true;
 		}

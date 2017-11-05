@@ -45,7 +45,7 @@ namespace KulGen.iOS
 
             string dbPath = Path.Combine(libFolder, "appofmanythings.db3");
 
-			await Core.Setup.SharedSetup (dbPath);
+			await Core.CommonSetup.SharedSetup (dbPath);
 
 			SetupComplete.Value = true;
 		}
