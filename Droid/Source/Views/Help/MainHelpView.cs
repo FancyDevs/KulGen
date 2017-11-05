@@ -41,7 +41,7 @@ namespace KulGen.Droid.Source.Views.Help
 			textGreyHawkLink.Text = ViewModel.HelpLink;
 			textNarritiveLink.Text = ViewModel.HelpLink;
 
-			SetupActionBar ("Help");
+			SetupActionBar (ViewModel.Title);
 		}
 
 		protected override void SetupBindings (MvxFluentBindingDescriptionSet<MainHelpView, MainHelpViewModel> bindingSet)

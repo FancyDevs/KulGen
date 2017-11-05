@@ -15,15 +15,16 @@ namespace KulGen.iOS.Source.Views.Options
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			// Perform any additional setup after loading the view, typically from a nib.
+			SetupNavBar (ViewModel.Title);
 
-            UIBarButtonItem addItem = new UIBarButtonItem("Save",
+			UIBarButtonItem saveItem = new UIBarButtonItem("Save",
                                                           UIBarButtonItemStyle.Done,
                                                           (sender, e) => {
                 ViewModel.SaveOptions.Execute(null);
-                                                          });
+			});
+			saveItem.SetTitleTextAttributes (GetNavButtonAttributes (), UIControlState.Normal);
 
-            NavigationItem.RightBarButtonItem = addItem;
+            NavigationItem.RightBarButtonItem = saveItem;
 
             smgInitiative.ValueChanged += (sender, e) => {
                 switch (smgInitiative.SelectedSegment) {

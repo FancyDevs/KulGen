@@ -17,7 +17,7 @@ namespace KulGen.Source.ViewModels.Options
 
 		public ICommand SaveOptions => new MvxCommand (DoSaveOptions);
 
-		public string ActionbarTitle => AppStrings.actionbar_options;
+		public string Title => AppStrings.actionbar_options;
 		public string InitTitle => AppStrings.init_title;
 		public string InitDesc => AppStrings.init_desc;
 		public string InitAsc => AppStrings.init_asc;

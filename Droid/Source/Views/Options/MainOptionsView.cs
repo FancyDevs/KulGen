@@ -52,7 +52,7 @@ namespace KulGen.Droid.Source.Views.Options
 			radioCustom.Text = ViewModel.MultiNpcCustom;
 			editCustom.Hint = ViewModel.MultiNpcCustomHint;
 
-			SetupActionBar (ViewModel.ActionbarTitle);
+			SetupActionBar (ViewModel.Title);
 			GetOptionsFromPersistent ();
 		}
 

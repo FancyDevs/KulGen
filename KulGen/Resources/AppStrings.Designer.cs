@@ -137,6 +137,12 @@ namespace KulGen.Resources {
             }
         }
         
+        internal static string help_title {
+            get {
+                return ResourceManager.GetString("help_title", resourceCulture);
+            }
+        }
+        
         internal static string help_init_title {
             get {
                 return ResourceManager.GetString("help_init_title", resourceCulture);

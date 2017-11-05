@@ -50,6 +50,7 @@
 	<data name="multi_npc_custom_hint"><value>Enter Comma Seperated List</value></data>
 
 	<!-- Help -->
+	<data name="help_title"><value>Help</value></data>
 	<data name="help_init_title"><value>Initiative Options</value></data>
 	<data name="help_init_standard"><value>Standard</value></data>
 	<data name="help_init_standard_desc"><value>Combatants roll a D20 and adds their initiative to get there score. Combatants are then sorted in descending order.</value></data>

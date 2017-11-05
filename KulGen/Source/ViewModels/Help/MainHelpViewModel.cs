@@ -7,6 +7,7 @@ namespace KulGen.Source.ViewModels.Help
 {
 	public class MainHelpViewModel : NavigationBarViewModel
 	{
+		public string Title => AppStrings.help_title;
 		public string InitTitle => AppStrings.help_init_title;
 		public string InitStandard => AppStrings.help_init_standard;
 		public string InitStandardDesc => AppStrings.help_init_standard_desc;

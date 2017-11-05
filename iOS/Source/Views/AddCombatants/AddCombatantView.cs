@@ -14,13 +14,14 @@ namespace KulGen.iOS.Source.Views.AddCombatants
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-            // Perform any additional setup after loading the view, typically from a nib.
+			SetupNavBar (ViewModel.Title);
 
             UIBarButtonItem addItem = new UIBarButtonItem("Add", 
                                                           UIBarButtonItemStyle.Done,
                                                           (sender, e) => {
                 ViewModel.AddClicked.Execute(null);
-            });
+			});
+			addItem.SetTitleTextAttributes (GetNavButtonAttributes (), UIControlState.Normal);
 
             NavigationItem.RightBarButtonItem = addItem;
 

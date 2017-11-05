@@ -14,6 +14,8 @@ namespace KulGen.iOS.Source.Views.Help
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+			SetupNavBar (ViewModel.Title);
 			// Perform any additional setup after loading the view, typically from a nib.
 
             lblInitTitle.Text = ViewModel.InitTitle;

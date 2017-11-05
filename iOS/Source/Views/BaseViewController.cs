@@ -75,11 +75,20 @@ namespace KulGen.iOS.Source.Views
 			bindingSet.Apply ();
 		}
 
-		void SetupNavBar (string title)
+		public void SetupNavBar (string title)
 		{
+			NavigationItem.BackBarButtonItem = new UIBarButtonItem ("", UIBarButtonItemStyle.Plain, null);
+			NavigationController.NavigationBar.BarStyle = UIBarStyle.Black;
 			NavigationController.NavigationBar.BarTintColor = UIColor.FromRGB (36,38,37);
 			NavigationController.NavigationBar.TintColor = UIColor.White;
 			NavigationItem.Title = title;
+		}
+
+		public UITextAttributes GetNavButtonAttributes()
+		{
+			var attr = new UITextAttributes ();
+			attr.Font = UIFont.SystemFontOfSize (12);
+			return attr;
 		}
 
 		// Used to initialize UI 

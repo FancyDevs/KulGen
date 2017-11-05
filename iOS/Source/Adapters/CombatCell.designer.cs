@@ -9,145 +9,153 @@ using System.CodeDom.Compiler;
 
 namespace KulGen.iOS.Source.Adapters
 {
-    [Register ("CombatCell")]
-    partial class CombatCell
-    {
-        [Outlet]
-        UIKit.UIButton btnBackground { get; set; }
+	[Register ("CombatCell")]
+	partial class CombatCell
+	{
+		[Outlet]
+		UIKit.UIButton btnBackground { get; set; }
 
-        [Outlet]
-        UIKit.UIButton btnExpand { get; set; }
+		[Outlet]
+		UIKit.UIButton btnExpand { get; set; }
 
-        [Outlet]
-        UIKit.UIButton btnMaxHealth { get; set; }
+		[Outlet]
+		UIKit.UIButton btnMaxHealth { get; set; }
 
-        [Outlet]
-        UIKit.UIButton btnMinus { get; set; }
+		[Outlet]
+		UIKit.UIButton btnMinus { get; set; }
 
-        [Outlet]
-        UIKit.UIButton btnPlus { get; set; }
+		[Outlet]
+		UIKit.UIButton btnPlus { get; set; }
 
-        [Outlet]
-        UIKit.UIButton btnUpdate { get; set; }
+		[Outlet]
+		UIKit.UIButton btnUpdate { get; set; }
 
-        [Outlet]
-        UIKit.NSLayoutConstraint constraintExpand { get; set; }
+		[Outlet]
+		UIKit.NSLayoutConstraint constraintExpand { get; set; }
 
-        [Outlet]
-        UIKit.UILabel lblArmorClass { get; set; }
+		[Outlet]
+		KulGen.iOS.Controls.Checkbox InitiativeCheckbox { get; set; }
 
-        [Outlet]
-        UIKit.UILabel lblCharacterName { get; set; }
+		[Outlet]
+		UIKit.UILabel lblArmorClass { get; set; }
 
-        [Outlet]
-        UIKit.UILabel lblHealth { get; set; }
+		[Outlet]
+		UIKit.UILabel lblCharacterName { get; set; }
 
-        [Outlet]
-        UIKit.UILabel lblInitiative { get; set; }
+		[Outlet]
+		UIKit.UILabel lblHealth { get; set; }
 
-        [Outlet]
-        UIKit.UILabel lblPassive { get; set; }
+		[Outlet]
+		UIKit.UILabel lblInitiative { get; set; }
 
-        [Outlet]
-        UIKit.UILabel lblPlayerName { get; set; }
+		[Outlet]
+		UIKit.UILabel lblPassive { get; set; }
 
-        [Outlet]
-        UIKit.UITextField txtHealth { get; set; }
+		[Outlet]
+		UIKit.UILabel lblPlayerName { get; set; }
 
-        [Outlet]
-        UIKit.UIView viewExpanded { get; set; }
+		[Outlet]
+		UIKit.UITextField txtHealth { get; set; }
 
-        [Action ("ExpandAction:")]
-        partial void ExpandAction (Foundation.NSObject sender);
+		[Outlet]
+		UIKit.UIView viewExpanded { get; set; }
 
-        [Action ("HealthMinusAction:")]
-        partial void HealthMinusAction (Foundation.NSObject sender);
+		[Action ("ExpandAction:")]
+		partial void ExpandAction (Foundation.NSObject sender);
 
-        [Action ("HealthPlusAction:")]
-        partial void HealthPlusAction (Foundation.NSObject sender);
+		[Action ("HealthMinusAction:")]
+		partial void HealthMinusAction (Foundation.NSObject sender);
 
-        [Action ("MaxHealthAction:")]
-        partial void MaxHealthAction (Foundation.NSObject sender);
+		[Action ("HealthPlusAction:")]
+		partial void HealthPlusAction (Foundation.NSObject sender);
 
-        [Action ("updateAction:")]
-        partial void updateAction (Foundation.NSObject sender);
-        
-        void ReleaseDesignerOutlets ()
-        {
-            if (btnExpand != null) {
-                btnExpand.Dispose ();
-                btnExpand = null;
-            }
+		[Action ("MaxHealthAction:")]
+		partial void MaxHealthAction (Foundation.NSObject sender);
 
-            if (constraintExpand != null) {
-                constraintExpand.Dispose ();
-                constraintExpand = null;
-            }
+		[Action ("updateAction:")]
+		partial void updateAction (Foundation.NSObject sender);
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (btnBackground != null) {
+				btnBackground.Dispose ();
+				btnBackground = null;
+			}
 
-            if (lblArmorClass != null) {
-                lblArmorClass.Dispose ();
-                lblArmorClass = null;
-            }
+			if (btnExpand != null) {
+				btnExpand.Dispose ();
+				btnExpand = null;
+			}
 
-            if (lblCharacterName != null) {
-                lblCharacterName.Dispose ();
-                lblCharacterName = null;
-            }
+			if (btnMaxHealth != null) {
+				btnMaxHealth.Dispose ();
+				btnMaxHealth = null;
+			}
 
-            if (lblHealth != null) {
-                lblHealth.Dispose ();
-                lblHealth = null;
-            }
+			if (btnMinus != null) {
+				btnMinus.Dispose ();
+				btnMinus = null;
+			}
 
-            if (lblInitiative != null) {
-                lblInitiative.Dispose ();
-                lblInitiative = null;
-            }
+			if (btnPlus != null) {
+				btnPlus.Dispose ();
+				btnPlus = null;
+			}
 
-            if (lblPassive != null) {
-                lblPassive.Dispose ();
-                lblPassive = null;
-            }
+			if (btnUpdate != null) {
+				btnUpdate.Dispose ();
+				btnUpdate = null;
+			}
 
-            if (lblPlayerName != null) {
-                lblPlayerName.Dispose ();
-                lblPlayerName = null;
-            }
+			if (constraintExpand != null) {
+				constraintExpand.Dispose ();
+				constraintExpand = null;
+			}
 
-            if (txtHealth != null) {
-                txtHealth.Dispose ();
-                txtHealth = null;
-            }
+			if (lblArmorClass != null) {
+				lblArmorClass.Dispose ();
+				lblArmorClass = null;
+			}
 
-            if (viewExpanded != null) {
-                viewExpanded.Dispose ();
-                viewExpanded = null;
-            }
+			if (lblCharacterName != null) {
+				lblCharacterName.Dispose ();
+				lblCharacterName = null;
+			}
 
-            if (btnMinus != null) {
-                btnMinus.Dispose ();
-                btnMinus = null;
-            }
+			if (lblHealth != null) {
+				lblHealth.Dispose ();
+				lblHealth = null;
+			}
 
-            if (btnBackground != null) {
-                btnBackground.Dispose ();
-                btnBackground = null;
-            }
+			if (lblInitiative != null) {
+				lblInitiative.Dispose ();
+				lblInitiative = null;
+			}
 
-            if (btnPlus != null) {
-                btnPlus.Dispose ();
-                btnPlus = null;
-            }
+			if (lblPassive != null) {
+				lblPassive.Dispose ();
+				lblPassive = null;
+			}
 
-            if (btnMaxHealth != null) {
-                btnMaxHealth.Dispose ();
-                btnMaxHealth = null;
-            }
+			if (lblPlayerName != null) {
+				lblPlayerName.Dispose ();
+				lblPlayerName = null;
+			}
 
-            if (btnUpdate != null) {
-                btnUpdate.Dispose ();
-                btnUpdate = null;
-            }
-        }
-    }
+			if (txtHealth != null) {
+				txtHealth.Dispose ();
+				txtHealth = null;
+			}
+
+			if (viewExpanded != null) {
+				viewExpanded.Dispose ();
+				viewExpanded = null;
+			}
+
+			if (InitiativeCheckbox != null) {
+				InitiativeCheckbox.Dispose ();
+				InitiativeCheckbox = null;
+			}
+		}
+	}
 }

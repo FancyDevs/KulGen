@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CombatTrackerView">
             <connections>
                 <outlet property="btnAdd" destination="mXf-Jm-agm" id="w4C-oa-8dy"/>
+                <outlet property="btnClear" destination="mno-XJ-lXF" id="Hr6-jQ-VPO"/>
                 <outlet property="combatantTable" destination="Slt-p3-MB1" id="LYP-RX-E1w"/>
                 <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
                 <outlet property="viewMenu" destination="BWI-pu-0qp" id="DjH-jv-kNU"/>
@@ -27,10 +28,10 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXf-Jm-agm">
-                    <rect key="frame" x="310" y="602" width="45" height="45"/>
+                    <rect key="frame" x="295" y="587" width="60" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="45" id="aSR-Uz-d6y"/>
-                        <constraint firstAttribute="height" constant="45" id="ui8-Uo-zn3"/>
+                        <constraint firstAttribute="width" constant="60" id="aSR-Uz-d6y"/>
+                        <constraint firstAttribute="height" constant="60" id="ui8-Uo-zn3"/>
                     </constraints>
                     <state key="normal" image="ic_fab_add_circle.png"/>
                     <connections>
@@ -87,12 +88,25 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mno-XJ-lXF">
+                    <rect key="frame" x="20" y="587" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="5lX-XL-YRS"/>
+                        <constraint firstAttribute="height" constant="60" id="Jki-oA-wxb"/>
+                    </constraints>
+                    <state key="normal" image="ic_fab_clear_circle.png"/>
+                    <connections>
+                        <action selector="ClearCheckboxes:" destination="-1" eventType="touchDragInside" id="kwT-rl-y4u"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="BWI-pu-0qp" firstAttribute="top" secondItem="2" secondAttribute="top" constant="64" id="1dq-fJ-AfW"/>
                 <constraint firstAttribute="bottom" secondItem="Slt-p3-MB1" secondAttribute="bottom" id="79W-I2-ZpO"/>
                 <constraint firstAttribute="trailing" secondItem="Slt-p3-MB1" secondAttribute="trailing" id="KWD-DG-ja1"/>
+                <constraint firstItem="mno-XJ-lXF" firstAttribute="centerY" secondItem="mXf-Jm-agm" secondAttribute="centerY" id="REQ-PA-OHG"/>
+                <constraint firstItem="mno-XJ-lXF" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20" id="S9m-ZH-pOy"/>
                 <constraint firstAttribute="bottom" secondItem="mXf-Jm-agm" secondAttribute="bottom" constant="20" id="TF7-Kf-W3E"/>
                 <constraint firstItem="Slt-p3-MB1" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="dH2-jW-FTt"/>
                 <constraint firstAttribute="trailing" secondItem="BWI-pu-0qp" secondAttribute="trailing" id="p8F-tb-MA6"/>
@@ -103,6 +117,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_fab_add_circle.png" width="36" height="36"/>
+        <image name="ic_fab_add_circle.png" width="75" height="75"/>
+        <image name="ic_fab_clear_circle.png" width="75" height="75"/>
     </resources>
 </document>

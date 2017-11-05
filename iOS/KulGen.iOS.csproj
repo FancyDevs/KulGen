@@ -236,7 +236,6 @@
     <Compile Include="Source\Views\Options\MainOptionsView.designer.cs">
       <DependentUpon>MainOptionsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Controls\TypedCellMvxSimpleTableViewSource.cs" />
     <Compile Include="Bootstrap\FieldBindingPluginBootstrap.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="CustomMvxTouch\KulGIosViewPresenter.cs" />
@@ -250,6 +249,7 @@
       <DependentUpon>CombatCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Converters\VisibilityToValue.cs" />
+    <Compile Include="Source\Controls\Checkbox.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Source\Views\AddCombatants\AddCombatantView.xib" />
@@ -269,6 +269,9 @@
     <BundleResource Include="Resources\ic_increase_health.png" />
     <BundleResource Include="Resources\ic_toolbar.png" />
     <BundleResource Include="Resources\icon_main.png" />
+    <BundleResource Include="Resources\CheckboxDisabled.png" />
+    <BundleResource Include="Resources\CheckboxEnabled.png" />
+    <BundleResource Include="Resources\ic_fab_clear_circle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
