@@ -213,7 +213,6 @@
     <Compile Include="Source\Views\EditCombatants\EditCombatantView.cs" />
     <Compile Include="Source\Views\Options\MainOptionsView.cs" />
     <Compile Include="Source\Views\Help\MainHelpView.cs" />
-    <Compile Include="Source\Converters\VisibilityToInt.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
