@@ -12,7 +12,7 @@ namespace KulGen.Core
 	{
 		SQLiteConnection SQLiteDatabase { get; set; }
 		List<Combatant> CombatantsList { get; set; }
-		Combatant NewCombatant { get; set; }
+		Combatant CurrentCombatant { get; set; }
 		string MultiNpcCustomSuffix { get; }
 
 		MultiNpcSuffixOptions GetMultipleNpcOption ();
@@ -26,7 +26,7 @@ namespace KulGen.Core
 	{
 		public SQLiteConnection SQLiteDatabase { get; set; }
 		public List<Combatant> CombatantsList { get; set; }
-		public Combatant NewCombatant { get; set; }
+		public Combatant CurrentCombatant { get; set; }
 		public string MultiNpcCustomSuffix { get; private set; }
 
 		MultiNpcSuffixOptions savedMultipleNpcOption;

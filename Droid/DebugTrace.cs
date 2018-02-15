@@ -4,7 +4,7 @@ using MvvmCross.Platform.Platform;
 
 namespace KulGen.Droid
 {
-    public class DebugTrace : IMvxTrace
+	public class DebugTrace : IMvxTrace
     {
         public void Trace(MvxTraceLevel level, string tag, Func<string> message)
         {

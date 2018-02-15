@@ -17,6 +17,7 @@
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,6 +27,7 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,7 +37,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
@@ -204,8 +205,6 @@
     <Compile Include="Source\MvxBindings\MvxListViewAdapter.cs" />
     <Compile Include="Source\Converters\IntToStringConverter.cs" />
     <Compile Include="Bootstrap\FieldBindingPluginBootstrap.cs" />
-    <Compile Include="Source\Adapters\CombatantListAdapter.cs" />
-    <Compile Include="Source\Adapters\CombatListItem.cs" />
     <Compile Include="Source\Converters\StringToIntConverter.cs" />
     <Compile Include="Source\Views\AddCombatants\AddCombatantView.cs" />
     <Compile Include="Source\Converters\VisibilityGoneValueConverter.cs" />
@@ -213,6 +212,13 @@
     <Compile Include="Source\Views\EditCombatants\EditCombatantView.cs" />
     <Compile Include="Source\Views\Options\MainOptionsView.cs" />
     <Compile Include="Source\Views\Help\MainHelpView.cs" />
+    <Compile Include="Source\Views\RandomGenerators\RandomMagicItemView.cs" />
+    <Compile Include="Source\Adapters\CombatTracker\CombatantListAdapter.cs" />
+    <Compile Include="Source\Adapters\CombatTracker\CombatListItem.cs" />
+    <Compile Include="Source\Adapters\RandomMagicItem\RandomMagicListAdapter.cs" />
+    <Compile Include="Source\Adapters\RandomMagicItem\RandomMagicListItem.cs" />
+    <Compile Include="Source\Converters\IntToRarityValueConverter.cs" />
+    <Compile Include="Source\Converters\IntToItemTypeValueConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -231,8 +237,7 @@
     <AndroidResource Include="Resources\layout\combat_tracker_layout.xml" />
     <AndroidResource Include="Resources\drawable\icon_main.png" />
     <AndroidResource Include="Resources\values\Colors.xml" />
-    <AndroidResource Include="Resources\layout\bottom_toolbar.xml" />
-    <AndroidResource Include="Resources\drawable\toolbar_button.xml" />
+    <AndroidResource Include="Resources\drawable\toolbar_combat_button.xml" />
     <AndroidResource Include="Resources\values\Styles.xml" />
     <AndroidResource Include="Resources\layout\top_toolbar.xml" />
     <AndroidResource Include="Resources\menu\combat_tracker_menu.xml" />
@@ -245,12 +250,19 @@
     <AndroidResource Include="Resources\drawable\ic_increase_health.png" />
     <AndroidResource Include="Resources\values\Dimens.xml" />
     <AndroidResource Include="Resources\drawable\ic_combat.png" />
-    <AndroidResource Include="Resources\drawable\ic_combat_2.png" />
     <AndroidResource Include="Resources\layout\main_options_layout.xml" />
     <AndroidResource Include="Resources\menu\main_options_menu.xml" />
     <AndroidResource Include="Resources\drawable\ic_toolbar.png" />
     <AndroidResource Include="Resources\drawable\ic_fab_uncheck.png" />
     <AndroidResource Include="Resources\layout\main_help_layout.xml" />
+    <AndroidResource Include="Resources\layout\bottom_toolbar.axml" />
+    <AndroidResource Include="Resources\layout\random_magic_gen_layout.axml" />
+    <AndroidResource Include="Resources\drawable\options_background.xml" />
+    <AndroidResource Include="Resources\drawable\toolbar_random_button.xml" />
+    <AndroidResource Include="Resources\drawable\ic_combat_toolbar.png" />
+    <AndroidResource Include="Resources\drawable\ic_random_toolbar.png" />
+    <AndroidResource Include="Resources\drawable\random_filter_button.xml" />
+    <AndroidResource Include="Resources\layout\random_magic_item.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Source\" />
@@ -265,6 +277,9 @@
     <Folder Include="Source\Views\EditCombatants\" />
     <Folder Include="Source\Views\Options\" />
     <Folder Include="Source\Views\Help\" />
+    <Folder Include="Source\Views\RandomGenerators\" />
+    <Folder Include="Source\Adapters\CombatTracker\" />
+    <Folder Include="Source\Adapters\RandomMagicItem\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

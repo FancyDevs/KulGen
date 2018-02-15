@@ -1,14 +1,13 @@
 ﻿using System;
-using Android.App;
 using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using KulGen.Adapters.CombatTracker;
 using KulGen.Droid.MvxBindings;
-using KulGen.Adapters;
 using MvvmCross.Binding.BindingContext;
 
-namespace KulGen.Droid.Adapters
+namespace KulGen.Droid.Adapters.CombatTracker
 {
 	public class CombatListItem : LinearLayout, IMvxListItem
 	{
@@ -49,6 +48,7 @@ namespace KulGen.Droid.Adapters
 
 		public CombatListItem (IntPtr javaReference, JniHandleOwnership transfer) : base (javaReference, transfer)
 		{
+			Init ();
 		}
 
 		public CombatListItem (Context context) : base (context)
@@ -56,7 +56,7 @@ namespace KulGen.Droid.Adapters
 			Init (context);
 		}
 
-		void Init (Context context)
+		void Init (Context context = null)
 		{
 			Clickable = true;
 			Content = LayoutInflater.From (context).Inflate (TemplateId, this, true);
@@ -89,10 +89,11 @@ namespace KulGen.Droid.Adapters
 				set.Bind (TextHealth).For (x => x.Text).To (vm => vm.Health).WithConversion ("IntToStringConverter");
 				set.Bind (EditDamage).For (x => x.Text).To (vm => vm.Damage).WithConversion ("IntToStringConverter");
 
-				set.Bind (checkBoxInitiative).For ("Visibility").To (vm => vm.IsCheckBoxInitiative).WithConversion ("Visibility");;
+				set.Bind (checkBoxInitiative).For ("Visibility").To (vm => vm.IsCheckBoxInitiative).WithConversion ("Visibility");
 				set.Bind (LayoutCombatBox).For ("Visibility").To (vm => vm.ShowCombatWindow).WithConversion ("Visibility");
-				set.Bind (TextInitiative).For ("Visibility").To (vm => vm.IsCheckBoxInitiative).WithConversion ("InvertedVisibility"); ;
+				set.Bind (TextInitiative).For ("Visibility").To (vm => vm.IsCheckBoxInitiative).WithConversion ("InvertedVisibility"); 
 
+				set.Bind (checkBoxInitiative).For (checkBoxInitiative.ClickEvent ()).To (vm => vm.CombatantHasGone);
 				set.Bind (TextMinusDamage).For (TextMinusDamage.ClickEvent ()).To (vm => vm.MinusDamage);
 				set.Bind (TextPlusDamage).For (TextPlusDamage.ClickEvent ()).To (vm => vm.AddDamage);
 				set.Bind (TextUpdate).For (TextUpdate.ClickEvent ()).To (vm => vm.UpdateHealth);

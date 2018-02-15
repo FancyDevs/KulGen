@@ -14,8 +14,10 @@ namespace KulGen.Droid.Views.AddCombatants
 		NoHistory = true,
 		ScreenOrientation = ScreenOrientation.Portrait
 	)]
-	public class AddCombatantView : BaseView<AddCombatantView, AddCombatantViewModel>
+	public class AddCombatantView : NavigationBarView<AddCombatantView, AddCombatantViewModel>
 	{
+		protected override int LayoutResId => Resource.Layout.add_combatant_layout;
+
 		EditText editCombatantName;
 		EditText editPlayerName;
 		EditText editInitiative;
@@ -28,10 +30,10 @@ namespace KulGen.Droid.Views.AddCombatants
 		LinearLayout layoutPlayerName;
 		LinearLayout layoutCreateNumber;
 
-		protected override int LayoutResId => Resource.Layout.add_combatant_layout;
-
 		protected override void OnInitializeComponents ()
 		{
+			base.OnInitializeComponents ();
+
 			editCombatantName = FindViewById<EditText> (Resource.Id.add_character_name);
 			editPlayerName = FindViewById<EditText> (Resource.Id.add_player_name);
 			editInitiative = FindViewById<EditText> (Resource.Id.add_initiative);

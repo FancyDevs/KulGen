@@ -8,7 +8,7 @@ using MvvmCross.FieldBinding;
 
 namespace KulGen.ViewModels.EditCombatants
 {
-	public class EditCombatantViewModel : BaseViewModel
+	public class EditCombatantViewModel : NavigationBarViewModel
 	{
 		public readonly INC<string> CharacterName = new NC<string> ();
 		public readonly INC<string> PlayerName = new NC<string> ();
@@ -32,42 +32,34 @@ namespace KulGen.ViewModels.EditCombatants
 		public string NumberText => AppStrings.add_edit_number;
 		public string PlayerNameText => AppStrings.add_edit_player_name;
 
-		int combatantId;
-		int health;
-		bool hasGone;
+		Combatant combatant;
 
-		public EditCombatantViewModel (ILocalSettings settings) : base (settings) { }
+		public EditCombatantViewModel (ILocalSettings settings) : base (settings) {
+			combatant = settings.CurrentCombatant;
+		}
 
-		public void Init (NavObject nav)
+		public void Init ()
 		{
-			if (nav != null) {
-				combatantId = nav.Id;
-				CharacterName.Value = nav.Name;
-				IsPlayer.Value = nav.IsPlayer;
-				PlayerName.Value = nav.PlayerName;
-				Initiative.Value = nav.Initiative;
-				MaxHealth.Value = nav.MaxHealth;
-				health = nav.Health;
-				ArmorClass.Value = nav.ArmorClass;
-				PassivePerception.Value = nav.PassivePerception;
-				hasGone = nav.HasGone;
+			if (combatant != null) {
+				CharacterName.Value = combatant.Name;
+				IsPlayer.Value = combatant.IsPlayer;
+				PlayerName.Value = combatant.PlayerName;
+				Initiative.Value = combatant.Initiative;
+				MaxHealth.Value = combatant.MaxHealth;
+				ArmorClass.Value = combatant.ArmorClass;
+				PassivePerception.Value = combatant.PassivePerception;
 			}
 		}
 
 		void DoUpdate ()
 		{
-			var combatant = new Combatant {
-				ID = combatantId,
-				Name = CharacterName.Value,
-				IsPlayer = IsPlayer.Value,
-				PlayerName = PlayerName.Value,
-				Initiative = Initiative.Value,
-				Health = health,
-				MaxHealth = MaxHealth.Value,
-				ArmorClass = ArmorClass.Value,
-				PassivePerception = PassivePerception.Value,
-				HasGone = hasGone
-			};
+			combatant.Name = CharacterName.Value;
+			combatant.IsPlayer = IsPlayer.Value;
+			combatant.PlayerName = PlayerName.Value;
+			combatant.Initiative = Initiative.Value;
+			combatant.MaxHealth = MaxHealth.Value;
+			combatant.ArmorClass = ArmorClass.Value;
+			combatant.PassivePerception = PassivePerception.Value;
 
 			settings.SQLiteDatabase.Update (combatant);
 			ShowViewModel<CombatTrackerViewModel> ();
@@ -75,26 +67,8 @@ namespace KulGen.ViewModels.EditCombatants
 
 		void DoDelete ()
 		{
-			var combatant = new Combatant {
-				ID = combatantId
-			};
-
 			settings.SQLiteDatabase.Delete (combatant);
 			ShowViewModel<CombatTrackerViewModel> ();
-		}
-
-		public class NavObject
-		{
-			public int Id { get; set; }
-			public string Name { get; set; }
-			public bool IsPlayer { get; set; }
-			public string PlayerName { get; set; }
-			public int Initiative { get; set; }
-			public int MaxHealth { get; set; }
-			public int Health { get; set; }
-			public int ArmorClass { get; set; }
-			public int PassivePerception { get; set; }
-			public bool HasGone { get; set; }
 		}
 	}
 }

@@ -9,7 +9,7 @@ using MvvmCross.FieldBinding;
 
 namespace KulGen.ViewModels.AddCombatants
 {
-	public class AddCombatantViewModel : BaseViewModel
+	public class AddCombatantViewModel : NavigationBarViewModel
 	{
 		const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 

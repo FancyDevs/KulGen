@@ -1,15 +1,13 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using KulGen.Core;
 using KulGen.DataModels;
 using KulGen.Source.Util;
 using KulGen.ViewModels;
-using KulGen.ViewModels.CombatTracker;
 using KulGen.ViewModels.EditCombatants;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.FieldBinding;
 
-namespace KulGen.Adapters
+namespace KulGen.Adapters.CombatTracker
 {
 	public class CombatListItemModel : BaseViewModel
 	{
@@ -19,6 +17,7 @@ namespace KulGen.Adapters
 		public ICommand MinusDamage { get { return new MvxCommand (DoMinusDamage); } }
 		public ICommand AddDamage { get { return new MvxCommand (DoAddDamage); } }
 		public ICommand ShowHideCombatWindow { get { return new MvxCommand (DoShowHideCombatWindow); } }
+		public ICommand CombatantHasGone { get { return new MvxCommand (DoCombatantHasGone); } }
 
 		public readonly INC<int> Initiative = new NC<int> ();
 		public readonly INC<string> CharacterName = new NC<string> ();
@@ -31,7 +30,7 @@ namespace KulGen.Adapters
 		public readonly INC<bool> ShowCombatWindow = new NC<bool> (false);
 		public readonly INC<bool> IsCheckBoxInitiative = new NC<bool> (false);
 
-		Combatant combatant;
+		public Combatant combatant;
 
 		public CombatListItemModel (ILocalSettings settings, Combatant combatant) : base (settings)
 		{
@@ -54,20 +53,8 @@ namespace KulGen.Adapters
 
 		public void DoEditItem ()
 		{
-			var navObj = new EditCombatantViewModel.NavObject {
-				Id = combatant.ID,
-				Name = combatant.Name,
-				IsPlayer = combatant.IsPlayer,
-				PlayerName = combatant.PlayerName,
-				Initiative = combatant.Initiative,
-				MaxHealth = combatant.MaxHealth,
-				Health = Health.Value,
-				ArmorClass = combatant.ArmorClass,
-				PassivePerception = combatant.PassivePerception,
-				HasGone = combatant.HasGone
-			};
-
-			ShowViewModel<EditCombatantViewModel> (navObj);
+			settings.CurrentCombatant = combatant;
+			ShowViewModel<EditCombatantViewModel> ();
 		}
 
 		void DoShowHideCombatWindow ()
@@ -107,6 +94,12 @@ namespace KulGen.Adapters
 		void UpdateCombatantHealth ()
 		{
 			combatant.Health = Health.Value;
+			settings.SQLiteDatabase.Update (combatant);
+		}
+
+		void DoCombatantHasGone ()
+		{
+			combatant.HasGone = HasGone.Value;
 			settings.SQLiteDatabase.Update (combatant);
 		}
 	}

@@ -10,8 +10,7 @@
         <include
             layout="@layout/top_toolbar" />
         <LinearLayout
-            style="@style/OptionsSectionLayout"
-            android:background="@color/secondary_color">
+            style="@style/OptionsSectionLayout">
             <TextView
                 style="@style/AddEditCombatantTextView"
                 android:id="@+id/text_init_title" />
@@ -31,8 +30,7 @@
             </RadioGroup>
         </LinearLayout>
         <LinearLayout
-            style="@style/OptionsSectionLayout"
-            android:background="@color/white">
+            style="@style/OptionsSectionLayout">
             <TextView
                 style="@style/AddEditCombatantTextView"
                 android:id="@+id/text_multi_title" />
@@ -53,7 +51,6 @@
         </LinearLayout>
         <LinearLayout
             style="@style/OptionsSectionLayout"
-            android:background="@color/white"
             android:id="@+id/multi_npc_custom_layout">
             <EditText
                 style="@style/AddEditCombatantEditText"
@@ -61,4 +58,6 @@
                 android:inputType="text" />
         </LinearLayout>
     </LinearLayout>
+    <include
+        layout="@layout/bottom_toolbar" />
 </RelativeLayout>

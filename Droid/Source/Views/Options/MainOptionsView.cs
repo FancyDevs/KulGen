@@ -5,7 +5,8 @@ using Android.Views;
 using Android.Widget;
 using KulGen.Droid.Views;
 using KulGen.Source.Util;
-using KulGen.Source.ViewModels.Options;
+using KulGen.ViewModels.Options;
+using MvvmCross.Binding.BindingContext;
 
 namespace KulGen.Droid.Source.Views.Options
 {
@@ -56,7 +57,7 @@ namespace KulGen.Droid.Source.Views.Options
 			GetOptionsFromPersistent ();
 		}
 
-		protected override void SetupBindings (MvvmCross.Binding.BindingContext.MvxFluentBindingDescriptionSet<MainOptionsView, MainOptionsViewModel> bindingSet)
+		protected override void SetupBindings (MvxFluentBindingDescriptionSet<MainOptionsView, MainOptionsViewModel> bindingSet)
 		{
 			bindingSet.Bind (layoutCustom).For ("Visibility").To (vm => vm.IsCustomNpcSuffix).WithConversion ("Visibility");
 			bindingSet.Bind (editCustom).For (v => v.Text).To (vm => vm.MultiNpcCustomSuffix);

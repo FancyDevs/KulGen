@@ -16,7 +16,7 @@
     <item>
         <shape>
             <solid
-                android:color="@color/secondary_color" />
+                android:color="@color/darkred" />
             <corners
                 android:radius="2dp" />
             <padding

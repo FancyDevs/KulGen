@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Foundation;
-using KulGen.Adapters;
+using KulGen.Adapters.CombatTracker;
 using KulGen.iOS.Source.Adapters;
 using KulGen.ViewModels.CombatTracker;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.iOS.Views;
-using MvvmCross.FieldBinding;
-using MvvmCross.iOS.Views;
 using MvvmCross.iOS.Views.Presenters.Attributes;
 using UIKit;
 
@@ -42,7 +40,6 @@ namespace KulGen.iOS.Source.Views.CombatTracker
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
-
 			ViewModel.UpdateCombatantList.Execute (null);
 		}
 

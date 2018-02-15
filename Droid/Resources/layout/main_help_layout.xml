@@ -1,54 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<Linearlayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/top_toolbar" />
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <include
-            layout="@layout/top_toolbar" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
         <LinearLayout
-            style="@style/HelpSectionLayout"
-            android:background="@color/secondary_color">
-            <TextView
-                style="@style/HelpTextView.TopTitle"
-                android:id="@+id/help_init_title" />
-            <TextView
-                style="@style/HelpTextView.Title"
-                android:id="@+id/help_init_standard" />
-            <TextView
-                style="@style/HelpTextView.MultiLine"
-                android:id="@+id/help_init_standard_desc" />
-            <TextView
-                style="@style/HelpTextView.Title"
-                android:id="@+id/help_init_greyhawk" />
-            <TextView
-                style="@style/HelpTextView.MultiLine"
-                android:id="@+id/help_init_greyhawk_desc" />
-            <TextView
-                style="@style/HelpTextView.Hyperlink"
-                android:id="@+id/text_help_greyhawk_link" />
-            <TextView
-                style="@style/HelpTextView.Title"
-                android:id="@+id/help_init_narrative" />
-            <TextView
-                style="@style/HelpTextView.MultiLine"
-                android:id="@+id/help_init_narrative_desc" />
-            <TextView
-                style="@style/HelpTextView.Hyperlink"
-                android:id="@+id/text_help_narrative_link" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                style="@style/HelpSectionLayout">
+                <TextView
+                    style="@style/HelpTextView.TopTitle"
+                    android:id="@+id/help_init_title" />
+                <TextView
+                    style="@style/HelpTextView.Title"
+                    android:id="@+id/help_init_standard" />
+                <TextView
+                    style="@style/HelpTextView.MultiLine"
+                    android:id="@+id/help_init_standard_desc" />
+                <TextView
+                    style="@style/HelpTextView.Title"
+                    android:id="@+id/help_init_greyhawk" />
+                <TextView
+                    style="@style/HelpTextView.MultiLine"
+                    android:id="@+id/help_init_greyhawk_desc" />
+                <TextView
+                    style="@style/HelpTextView.Hyperlink"
+                    android:id="@+id/text_help_greyhawk_link" />
+                <TextView
+                    style="@style/HelpTextView.Title"
+                    android:id="@+id/help_init_narrative" />
+                <TextView
+                    style="@style/HelpTextView.MultiLine"
+                    android:id="@+id/help_init_narrative_desc" />
+                <TextView
+                    style="@style/HelpTextView.Hyperlink"
+                    android:id="@+id/text_help_narrative_link" />
+            </LinearLayout>
+            <LinearLayout
+                style="@style/HelpSectionLayout"
+                android:paddingBottom="20dp">
+                <TextView
+                    style="@style/HelpTextView.TopTitle"
+                    android:id="@+id/help_multi_title" />
+                <TextView
+                    style="@style/HelpTextView.MultiLine"
+                    android:id="@+id/help_multi_desc" />
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            style="@style/HelpSectionLayout"
-            android:background="@color/white">
-            <TextView
-                style="@style/HelpTextView.TopTitle"
-                android:id="@+id/help_multi_title" />
-            <TextView
-                style="@style/HelpTextView.MultiLine"
-                android:id="@+id/help_multi_desc" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    </ScrollView>
+    <include
+        layout="@layout/bottom_toolbar" />
+</Linearlayout>

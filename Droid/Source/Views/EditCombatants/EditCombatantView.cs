@@ -14,8 +14,10 @@ namespace KulGen.Droid.Views.EditCombatants
 		NoHistory = true,
 		ScreenOrientation = ScreenOrientation.Portrait
 	)]
-	public class EditCombatantView : BaseView<EditCombatantView, EditCombatantViewModel>
+	public class EditCombatantView : NavigationBarView<EditCombatantView, EditCombatantViewModel>
 	{
+		protected override int LayoutResId => Resource.Layout.edit_combatant_layout;
+
 		EditText editCharacterName;
 		EditText editPlayerName;
 		EditText editInitiative;
@@ -24,10 +26,10 @@ namespace KulGen.Droid.Views.EditCombatants
 		EditText editArmorClass;
 		LinearLayout layoutPlayerName;
 
-		protected override int LayoutResId => Resource.Layout.edit_combatant_layout;
-
 		protected override void OnInitializeComponents ()
 		{
+			base.OnInitializeComponents ();
+
 			editCharacterName = FindViewById<EditText> (Resource.Id.edit_character_name);
 			editPlayerName = FindViewById<EditText> (Resource.Id.edit_player_name);
 			editInitiative = FindViewById<EditText> (Resource.Id.edit_initiative);

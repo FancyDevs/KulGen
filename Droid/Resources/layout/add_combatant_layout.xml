@@ -1,109 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <include
+            layout="@layout/top_toolbar" />
+        <RadioGroup
+            style="@style/AddEditCombatantLayout"
+            android:id="@+id/radio_player_npc">
+            <RadioButton
+                android:id="@+id/radio_player"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary_color" />
+            <RadioButton
+                android:id="@+id/radio_npc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary_color"
+                android:checked="true" />
+        </RadioGroup>
+        <LinearLayout
+            style="@style/AddEditCombatantLayout">
+            <TextView
+                style="@style/AddEditCombatantTextView"
+                android:id="@+id/add_text_combatant_name" />
+            <EditText
+                style="@style/AddEditCombatantEditText"
+                android:id="@+id/add_character_name"
+                android:inputType="textCapSentences" />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/AddEditCombatantLayoutMulti">
+            <LinearLayout
+                style="@style/AddEditCombatantLayoutMultiSub"
+                android:layout_weight="1">
+                <TextView
+                    style="@style/AddEditCombatantTextView"
+                    android:id="@+id/add_text_initiative" />
+                <EditText
+                    style="@style/AddEditCombatantEditText.Stat"
+                    android:id="@+id/add_initiative" />
+            </LinearLayout>
+            <LinearLayout
+                style="@style/AddEditCombatantLayoutMultiSub"
+                android:layout_weight="1">
+                <TextView
+                    style="@style/AddEditCombatantTextView"
+                    android:id="@+id/add_text_max_health" />
+                <EditText
+                    style="@style/AddEditCombatantEditText.Stat"
+                    android:id="@+id/add_max_health"
+                    android:maxLength="4" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            style="@style/AddEditCombatantLayoutMulti">
+            <LinearLayout
+                style="@style/AddEditCombatantLayoutMultiSub"
+                android:layout_weight="1">
+                <TextView
+                    style="@style/AddEditCombatantTextView"
+                    android:id="@+id/add_text_perception" />
+                <EditText
+                    style="@style/AddEditCombatantEditText.Stat"
+                    android:id="@+id/add_perception" />
+            </LinearLayout>
+            <LinearLayout
+                style="@style/AddEditCombatantLayoutMultiSub"
+                android:layout_weight="1">
+                <TextView
+                    style="@style/AddEditCombatantTextView"
+                    android:id="@+id/add_text_armor" />
+                <EditText
+                    style="@style/AddEditCombatantEditText.Stat"
+                    android:id="@+id/add_armor" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            style="@style/AddEditCombatantLayout"
+            android:id="@+id/layout_add_create_number">
+            <TextView
+                style="@style/AddEditCombatantTextView"
+                android:id="@+id/add_text_create_number" />
+            <EditText
+                style="@style/AddEditCombatantEditText.Stat"
+                android:layout_width="50dp"
+                android:id="@+id/add_create_number" />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/AddEditCombatantLayout"
+            android:id="@+id/layout_add_player_name">
+            <TextView
+                style="@style/AddEditCombatantTextView"
+                android:id="@+id/add_text_player_name" />
+            <EditText
+                style="@style/AddEditCombatantEditText"
+                android:id="@+id/add_player_name"
+                android:inputType="textCapSentences" />
+        </LinearLayout>
+    </LinearLayout>
     <include
-        layout="@layout/top_toolbar" />
-    <RadioGroup
-        style="@style/AddEditCombatantLayout"
-        android:id="@+id/radio_player_npc"
-        android:background="@color/white">
-        <RadioButton
-            android:id="@+id/radio_player"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/primary_color" />
-        <RadioButton
-            android:id="@+id/radio_npc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/primary_color"
-            android:checked="true" />
-    </RadioGroup>
-    <LinearLayout
-        style="@style/AddEditCombatantLayout"
-        android:background="@color/secondary_color">
-        <TextView
-            style="@style/AddEditCombatantTextView"
-            android:id="@+id/add_text_combatant_name" />
-        <EditText
-            style="@style/AddEditCombatantEditText"
-            android:id="@+id/add_character_name"
-            android:inputType="textCapSentences" />
-    </LinearLayout>
-    <LinearLayout
-        style="@style/AddEditCombatantLayout"
-        android:background="@color/white">
-        <LinearLayout
-            style="@style/AddEditCombatantLayout"
-            android:layout_weight="1">
-            <TextView
-                style="@style/AddEditCombatantTextView"
-                android:id="@+id/add_text_initiative" />
-            <EditText
-                style="@style/AddEditCombatantEditText.Stat"
-                android:id="@+id/add_initiative" />
-        </LinearLayout>
-        <LinearLayout
-            style="@style/AddEditCombatantLayout"
-            android:layout_weight="1">
-            <TextView
-                style="@style/AddEditCombatantTextView"
-                android:id="@+id/add_text_max_health" />
-            <EditText
-                style="@style/AddEditCombatantEditText.Stat"
-                android:id="@+id/add_max_health"
-                android:maxLength="4" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        style="@style/AddEditCombatantLayout"
-        android:background="@color/secondary_color">
-        <LinearLayout
-            style="@style/AddEditCombatantLayout"
-            android:layout_weight="1">
-            <TextView
-                style="@style/AddEditCombatantTextView"
-                android:id="@+id/add_text_perception" />
-            <EditText
-                style="@style/AddEditCombatantEditText.Stat"
-                android:id="@+id/add_perception" />
-        </LinearLayout>
-        <LinearLayout
-            style="@style/AddEditCombatantLayout"
-            android:layout_weight="1">
-            <TextView
-                style="@style/AddEditCombatantTextView"
-                android:id="@+id/add_text_armor" />
-            <EditText
-                style="@style/AddEditCombatantEditText.Stat"
-                android:id="@+id/add_armor" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        style="@style/AddEditCombatantLayout"
-        android:id="@+id/layout_add_create_number"
-        android:background="@color/white">
-        <TextView
-            style="@style/AddEditCombatantTextView"
-            android:id="@+id/add_text_create_number" />
-        <EditText
-            style="@style/AddEditCombatantEditText.Stat"
-            android:id="@+id/add_create_number" />
-    </LinearLayout>
-    <LinearLayout
-        style="@style/AddEditCombatantLayout"
-        android:id="@+id/layout_add_player_name"
-        android:background="@color/white">
-        <TextView
-            style="@style/AddEditCombatantTextView"
-            android:id="@+id/add_text_player_name" />
-        <EditText
-            style="@style/AddEditCombatantEditText"
-            android:id="@+id/add_player_name"
-            android:inputType="textCapSentences" />
-    </LinearLayout>
-</LinearLayout>
+        layout="@layout/bottom_toolbar" />
+</RelativeLayout>

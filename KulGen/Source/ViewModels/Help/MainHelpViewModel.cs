@@ -3,7 +3,7 @@ using KulGen.Core;
 using KulGen.Resources;
 using KulGen.ViewModels;
 
-namespace KulGen.Source.ViewModels.Help
+namespace KulGen.ViewModels.Help
 {
 	public class MainHelpViewModel : NavigationBarViewModel
 	{

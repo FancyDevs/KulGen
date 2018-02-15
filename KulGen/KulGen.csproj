@@ -39,7 +39,6 @@
     <Compile Include="Source\ViewModels\CombatTracker\CombatTrackerViewModel.cs" />
     <Compile Include="Source\DataModels\Combatant.cs" />
     <Compile Include="Source\ViewModels\ViewParams.cs" />
-    <Compile Include="Source\Adapters\CombatListItemModel.cs" />
     <Compile Include="Source\PropertyDependency\DependsOnAttribute.cs" />
     <Compile Include="Source\ViewModels\AddCombatants\AddCombatantViewModel.cs" />
     <Compile Include="Source\ViewModels\EditCombatants\EditCombatantViewModel.cs" />
@@ -50,6 +49,10 @@
       <DependentUpon>AppStrings.resx</DependentUpon>
     </Compile>
     <Compile Include="AppStart.cs" />
+    <Compile Include="Source\ViewModels\RandomGenerators\RandomMagicItemViewModel.cs" />
+    <Compile Include="Source\Adapters\CombatTracker\CombatListItemModel.cs" />
+    <Compile Include="Source\Adapters\RandomMagicItem\RandomMagicListItemModel.cs" />
+    <Compile Include="Source\DataModels\MagicItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Source\" />
@@ -64,6 +67,9 @@
     <Folder Include="Source\ViewModels\EditCombatants\" />
     <Folder Include="Source\ViewModels\Options\" />
     <Folder Include="Source\ViewModels\Help\" />
+    <Folder Include="Source\ViewModels\RandomGenerators\" />
+    <Folder Include="Source\Adapters\CombatTracker\" />
+    <Folder Include="Source\Adapters\RandomMagicItem\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

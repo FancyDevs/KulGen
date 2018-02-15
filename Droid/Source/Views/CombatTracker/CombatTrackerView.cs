@@ -1,12 +1,12 @@
 ﻿using System;
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
-using KulGen.Droid.Adapters;
+using KulGen.Droid.Adapters.CombatTracker;
 using KulGen.ViewModels.CombatTracker;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.Droid.BindingContext;
 using MvvmCross.Binding.Droid.Views;
 
@@ -40,7 +40,7 @@ namespace KulGen.Droid.Views.CombatTracker
 			SetupActionBar (ViewModel.Title);
 		}
 
-		protected override void SetupBindings (MvvmCross.Binding.BindingContext.MvxFluentBindingDescriptionSet<CombatTrackerView, CombatTrackerViewModel> bindingSet)
+		protected override void SetupBindings (MvxFluentBindingDescriptionSet<CombatTrackerView, CombatTrackerViewModel> bindingSet)
 		{
 			bindingSet.Bind (combatantList).For (x => x.ItemsSource).To (vm => vm.CombatantList);
 			bindingSet.Bind (fabClear).For ("Visibility").To (vm => vm.IsCheckBoxInitiative).WithConversion ("Visibility");

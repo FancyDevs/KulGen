@@ -5,32 +5,27 @@
     android:layout_height="match_parent">
     <include
         layout="@layout/top_toolbar" />
+    <TextView
+        style="@style/RandomFilterButton"
+        android:id="@+id/text_random_magic_filter"
+        android:layout_below="@+id/toptoolbar" />
     <RelativeLayout
         style="@style/MvxListViewParent"
-        android:layout_below="@+id/toptoolbar"
+        android:layout_below="@+id/text_random_magic_filter"
         android:layout_above="@+id/bottomtoolbar">
         <Mvx.MvxListView
             style="@style/MvxListViewStyle"
-            android:id="@+id/list_combat"
-            app:MvxItemTemplate="@layout/combat_item" />
+            android:id="@+id/list_random_magic"
+            app:MvxItemTemplate="@layout/random_magic_item" />
     </RelativeLayout>
     <include
         layout="@layout/bottom_toolbar" />
     <android.support.design.widget.FloatingActionButton
         style="@style/CombatFloatingButton"
-        android:id="@+id/fab_add"
+        android:id="@+id/fab_random_magic"
         android:layout_gravity="bottom|right"
         android:layout_alignParentRight="true"
         app:backgroundTint="@color/primary_color"
         android:layout_marginRight="15dp"
-        android:src="@drawable/ic_fab_add_circle" />
-    <android.support.design.widget.FloatingActionButton
-        style="@style/CombatFloatingButton"
-        android:id="@+id/fab_clear_checkboxes"
-        android:layout_gravity="bottom|left"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="15dp"
-        app:backgroundTint="@color/primary_color"
-        android:src="@drawable/ic_fab_uncheck"
-        android:visibility="gone" />
+        android:src="@drawable/ic_random_toolbar" />
 </RelativeLayout>

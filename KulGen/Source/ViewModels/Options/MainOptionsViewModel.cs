@@ -6,7 +6,7 @@ using KulGen.ViewModels;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.FieldBinding;
 
-namespace KulGen.Source.ViewModels.Options
+namespace KulGen.ViewModels.Options
 {
 	public class MainOptionsViewModel : NavigationBarViewModel
 	{

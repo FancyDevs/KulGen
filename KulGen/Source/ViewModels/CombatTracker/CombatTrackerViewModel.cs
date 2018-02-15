@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
-using KulGen.Core;
 using KulGen.Adapters;
+using KulGen.Adapters.CombatTracker;
+using KulGen.Core;
 using KulGen.DataModels;
+using KulGen.Resources;
+using KulGen.Source.Util;
 using KulGen.ViewModels.AddCombatants;
+using KulGen.ViewModels.Help;
+using KulGen.ViewModels.Options;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.FieldBinding;
-using KulGen.ViewModels.EditCombatants;
-using KulGen.Source.ViewModels.Options;
-using KulGen.Source.Util;
 using SQLite;
-using KulGen.Source.ViewModels.Help;
-using KulGen.Resources;
 
 namespace KulGen.ViewModels.CombatTracker
 {
@@ -24,13 +24,19 @@ namespace KulGen.ViewModels.CombatTracker
 		public ICommand GoToHelp { get { return new MvxCommand (DoGoToHelp); } }
 		public ICommand ClearCheckBoxes { get { return new MvxCommand (DoClearCheckBoxes); } }
 
-		public readonly INCList<CombatListItemModel> CombatantList = new NCList<CombatListItemModel> ();
-		public readonly INC<bool> IsCheckBoxInitiative = new NC<bool> ();
+		public INCList<CombatListItemModel> CombatantList = new NCList<CombatListItemModel> ();
+		public INC<bool> IsCheckBoxInitiative = new NC<bool> ();
 
 		public string Title => AppStrings.ct_title;
 
 		public CombatTrackerViewModel (ILocalSettings settings) : base (settings)
 		{
+		}
+
+		public override void ViewAppeared ()
+		{
+			base.ViewAppeared ();
+			DoUpdateCombatantList ();
 		}
 
 		void DoAddCombatItem ()
@@ -84,6 +90,8 @@ namespace KulGen.ViewModels.CombatTracker
 		{
 			foreach (CombatListItemModel c in CombatantList.Value) {
 				c.HasGone.Value = false;
+				c.combatant.HasGone = false;
+				settings.SQLiteDatabase.Update (c.combatant);
 			}
 		}
 	}

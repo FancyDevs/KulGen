@@ -5,6 +5,9 @@
   <item name="secondary_color" type="color">#eeeeee</item>
 
   <item name="darkred" type="color">#980000</item>
+  <item name="darkblue" type="color">#382f7e</item>
+  <item name="lightblue" type="color">#715fff</item>
+  <item name="darkgreen" type="color">#0c5a2b</item>
   <item name="grey" type="color">#454a47</item>
   <item name="yellow" type="color">#ffdd00</item>
   <item name="white" type="color">#ffffff</item>

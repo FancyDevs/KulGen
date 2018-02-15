@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/layout_edit_box"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <LinearLayout
+                style="@style/RandomItemContainer"
+                android:layout_width="wrap_content"
+                android:layout_weight="4">
+                <TextView
+                    android:id="@+id/text_item_name"
+                    style="@style/RandomItemStat"
+                    android:text="Magic Item Name" />
+                <TextView
+                    android:id="@+id/text_item_type"
+                    style="@style/RandomItemStatTitle"
+                    android:text="Type" />
+            </LinearLayout>
+            <LinearLayout
+                style="@style/RandomItemContainer"
+                android:layout_width="wrap_content">
+                <TextView
+                    style="@style/RandomItemStatTitle"
+                    android:id="@+id/text_rarity_title"
+                    android:text="Rarity" />
+                <TextView
+                    style="@style/RandomItemStat"
+                    android:id="@+id/text_rarity"
+                    android:text="Uncommon" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            style="@style/RandomItemContainer"
+            android:layout_width="50dp">
+            <TextView
+                style="@style/RandomItemStatTitle"
+                android:id="@+id/text_initiative_title"
+                android:text="Attune" />
+            <CheckBox
+                style="@style/RandomItemStat"
+                android:id="@+id/checkbox_attune"
+                android:buttonTint="@color/primary_color"
+                android:editable="false" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_expand_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/primary_color"
+            android:layout_marginBottom="10dp" />
+        <TextView
+            android:id="@+id/text_item_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Description Description Description Description Description Description Description Description Description Description " />
+    </LinearLayout>
+</LinearLayout>

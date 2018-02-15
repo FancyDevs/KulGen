@@ -1,16 +1,15 @@
 ﻿using System;
-using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.Runtime;
 using Android.Support.V4.Content;
 using Android.Views;
+using KulGen.Adapters.CombatTracker;
 using KulGen.Droid.MvxBindings;
-using KulGen.Adapters;
 using MvvmCross.Binding.Droid.BindingContext;
 using MvvmCross.Binding.Droid.Views;
 
-namespace KulGen.Droid.Adapters
+namespace KulGen.Droid.Adapters.CombatTracker
 {
 	public class CombatantAdapter : MvxListViewAdapter<CombatListItemModel>
 	{

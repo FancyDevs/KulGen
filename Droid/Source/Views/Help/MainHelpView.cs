@@ -4,7 +4,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.Widget;
 using KulGen.Droid.Views;
-using KulGen.Source.ViewModels.Help;
+using KulGen.ViewModels.Help;
 using MvvmCross.Binding.BindingContext;
 using Uri = Android.Net.Uri;
 

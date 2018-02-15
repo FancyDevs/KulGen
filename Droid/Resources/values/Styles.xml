@@ -17,14 +17,33 @@
     	<item name="actionMenuTextColor">@color/secondary_color</item>
     </style>
 
+	<!-- General -->
+	<style name="MvxListViewParent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:padding">10dp</item>
+	</style>
+	<style name="MvxListViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:paddingBottom">60dp</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:outlineProvider">bounds</item>
+        <item name="android:clipToPadding">false</item>
+	</style>
+	
+	 <!-- Toolbar Styles -->
     <style name="BottomToolbarButtons">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:background">@drawable/toolbar_button</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:padding">10dp</item>
         <item name="android:scaleType">fitCenter</item>
+        <item name="android:elevation">2dp</item>
     </style>
 
     <!-- Combat Tracker -->
@@ -61,14 +80,45 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_margin">5dp</item>
     </style>
+    <style name="CombatFloatingButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">75dp</item>
+        <item name="android:elevation">8dp</item>
+    </style>
 
-	<!-- Add Combatant -->
+	<!-- Add/Edit Combatant -->
     <style name="AddEditCombatantLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:orientation">horizontal</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:padding">10dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/options_background</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+    <style name="AddEditCombatantLayoutMulti">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="AddEditCombatantLayoutMultiSub">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/options_background</item>
+        <item name="android:elevation">2dp</item>
     </style>
     <style name="AddEditCombatantStatContainer">
         <item name="android:layout_width">match_parent</item>
@@ -104,8 +154,13 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:padding">10dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/options_background</item>
+        <item name="android:elevation">2dp</item>
     </style>
     <style name="OptionRadioGroup">
         <item name="android:layout_width">match_parent</item>
@@ -125,8 +180,13 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:padding">10dp</item>
         <item name="android:gravity">start</item>
+        <item name="android:background">@drawable/options_background</item>
+        <item name="android:elevation">2dp</item>
     </style>
     <style name="HelpTextView">
         <item name="android:layout_width">match_parent</item>
@@ -147,6 +207,37 @@
     </style>
     <style name="HelpTextView.Hyperlink">
         <item name="android:textColor">@color/darkred</item>
+    </style>
+
+	<!-- Random Section -->
+	<style name="RandomFilterButton">
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/random_filter_button</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:singleLine">false</item>
+        <item name="android:elevation">2dp</item>
+	</style>
+
+	<!-- Random Item -->
+	<style name="RandomItemContainer">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="RandomItemStatTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">8dp</item>
+    </style>
+    <style name="RandomItemStat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20dp</item>
     </style>
 	
 </resources>
