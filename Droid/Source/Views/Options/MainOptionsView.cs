@@ -15,7 +15,7 @@ namespace KulGen.Droid.Source.Views.Options
 		Theme = "@style/Theme.Main",
 		ScreenOrientation = ScreenOrientation.Portrait
 	)]
-	public class MainOptionsView : NavigationBarView<MainOptionsView, MainOptionsViewModel>
+	public class MainOptionsView : BaseView<MainOptionsView, MainOptionsViewModel>
 	{
 		protected override int LayoutResId => Resource.Layout.main_options_layout;
 
@@ -61,7 +61,6 @@ namespace KulGen.Droid.Source.Views.Options
 		{
 			bindingSet.Bind (layoutCustom).For ("Visibility").To (vm => vm.IsCustomNpcSuffix).WithConversion ("Visibility");
 			bindingSet.Bind (editCustom).For (v => v.Text).To (vm => vm.MultiNpcCustomSuffix);
-			base.SetupBindings (bindingSet);
 		}
 
 		public override bool OnCreateOptionsMenu (IMenu menu)

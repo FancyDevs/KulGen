@@ -2,10 +2,11 @@
 using KulGen.Core;
 using KulGen.Resources;
 using KulGen.ViewModels;
+using MvvmCross.Navigation;
 
 namespace KulGen.ViewModels.Help
 {
-	public class MainHelpViewModel : NavigationBarViewModel
+	public class MainHelpViewModel : BaseViewModel
 	{
 		public string Title => AppStrings.help_title;
 		public string InitTitle => AppStrings.help_init_title;
@@ -21,7 +22,7 @@ namespace KulGen.ViewModels.Help
 		public string GreyHawkLink = AppStrings.help_greyhawk_link;
 		public string NarrativeLink = AppStrings.help_narrative_link;
 		                                     
-		public MainHelpViewModel (ILocalSettings settings) : base (settings)
+		public MainHelpViewModel (ILocalSettings settings, IMvxNavigationService navigation) : base (settings, navigation)
 		{
 		}
 	}

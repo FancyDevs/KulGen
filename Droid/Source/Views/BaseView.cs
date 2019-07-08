@@ -1,14 +1,14 @@
 ﻿using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Widget;
-using KulGen.ViewModels;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.Droid.Views;
+using MvvmCross.Platforms.Android.Views;
+using MvvmCross.ViewModels;
 
 namespace KulGen.Droid.Views
 {
-    public abstract class BaseView : MvxActivity
+	public abstract class BaseView : MvxActivity
     {
 		protected abstract int LayoutResId { get; }
 
@@ -66,6 +66,7 @@ namespace KulGen.Droid.Views
 		public void SetupActionBar(string title)
 		{
 			var toolbar = FindViewById<Toolbar> (Resource.Id.toptoolbar);
+			toolbar.SetTitleTextColor (Color.White);
 			SetActionBar (toolbar);
 			ActionBar.Title = title;
 			ActionBar.SetIcon (Resource.Drawable.ic_toolbar);

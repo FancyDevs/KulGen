@@ -58,6 +58,4 @@
                 android:inputType="text" />
         </LinearLayout>
     </LinearLayout>
-    <include
-        layout="@layout/bottom_toolbar" />
 </RelativeLayout>

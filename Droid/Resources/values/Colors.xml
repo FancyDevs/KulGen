@@ -12,4 +12,5 @@
   <item name="yellow" type="color">#ffdd00</item>
   <item name="white" type="color">#ffffff</item>
   <item name="black" type="color">#000000</item>
+  <item name="green" type="color">#32CD32</item>
 </resources>

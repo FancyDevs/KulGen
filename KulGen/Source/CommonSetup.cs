@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using MvvmCross.Platform;
+using MvvmCross;
 
 namespace KulGen.Core
 {

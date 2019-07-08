@@ -179,12 +179,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KulGen\KulGen.csproj">
-      <Project>{26A68FFA-8797-4E81-819C-8ED418D4FE33}</Project>
-      <Name>KulGen</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_main40.png" />

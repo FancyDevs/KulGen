@@ -3,7 +3,7 @@
   <item
        android:id="@+id/menu_clear"
        android:showAsAction="never"
-       android:title="Clear" />
+       android:title="Clear NPCs" />
   <item
        android:id="@+id/menu_options"
        android:showAsAction="never"

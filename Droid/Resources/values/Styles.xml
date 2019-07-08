@@ -31,7 +31,6 @@
         <item name="android:elevation">2dp</item>
         <item name="android:paddingBottom">60dp</item>
         <item name="android:scrollbarStyle">outsideOverlay</item>
-        <item name="android:outlineProvider">bounds</item>
         <item name="android:clipToPadding">false</item>
 	</style>
 	
@@ -65,27 +64,49 @@
     </style>
     <style name="CombatItemHealthButton">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/black</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+    <style name="CombatItemHealthMinusPlusButton">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:background">@color/black</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+    <style name="CombatItemHealButton">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/darkgreen</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+    <style name="CombatItemDamageButton">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">45dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:background">@color/darkred</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center</item>
-        <item name="android:padding">10dp</item>
-    </style>
-    <style name="CombatItemHealthMinusPlusButton">
-        <item name="android:layout_width">30dp</item>
-        <item name="android:layout_height">30dp</item>
-        <item name="android:background">@color/darkred</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
     </style>
     <style name="CombatFloatingButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_marginBottom">75dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
         <item name="android:elevation">8dp</item>
     </style>
 

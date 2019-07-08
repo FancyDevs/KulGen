@@ -1,5 +1,5 @@
 ﻿using MvvmCross.Binding.BindingContext;
-using MvvmCross.Binding.Droid.Views;
+using MvvmCross.Platforms.Android.Binding.Views;
 
 namespace KulGen.Droid.MvxBindings
 {

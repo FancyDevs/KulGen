@@ -2,7 +2,6 @@
 using Android.Content.PM;
 using Android.Views;
 using Android.Widget;
-using KulGen.ViewModels.CombatTracker;
 using KulGen.ViewModels.EditCombatants;
 using MvvmCross.Binding.BindingContext;
 
@@ -14,7 +13,7 @@ namespace KulGen.Droid.Views.EditCombatants
 		NoHistory = true,
 		ScreenOrientation = ScreenOrientation.Portrait
 	)]
-	public class EditCombatantView : NavigationBarView<EditCombatantView, EditCombatantViewModel>
+	public class EditCombatantView : BaseView<EditCombatantView, EditCombatantViewModel>
 	{
 		protected override int LayoutResId => Resource.Layout.edit_combatant_layout;
 

@@ -1,28 +1,40 @@
-using Android.Content;
-using MvvmCross.Droid.Platform;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.Platform.Platform;
-using Microsoft.WindowsAzure.MobileServices;
-using MvvmCross.FieldBinding;
-using MvvmCross.Droid.Views;
-using MvvmCross.Droid.Shared.Presenter;
-using MvvmCross.Platform;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
+using System.Reflection;
+using Android.Content;
+using Android.Support.Design.Widget;
+using Android.Support.V4.View;
+using Android.Support.V4.Widget;
+using Android.Support.V7.Widget;
+using KulGen.Core;
+using Microsoft.WindowsAzure.MobileServices;
+using MvvmCross.Droid.Support.V4;
+using MvvmCross.Droid.Support.V7.AppCompat;
+using MvvmCross.Droid.Support.V7.RecyclerView;
+using MvvmCross.Platforms.Android.Presenters;
+using MvvmCross.Plugin.FieldBinding;
+using MvvmCross.ViewModels;
 
 namespace KulGen.Droid
 {
-	public class Setup : MvxAndroidSetup
+	public class Setup : MvxAppCompatSetup<App>
 	{
+		protected override IEnumerable<Assembly> AndroidViewAssemblies => new List<Assembly> (base.AndroidViewAssemblies)
+		{
+			typeof(NavigationView).Assembly,
+			typeof(CoordinatorLayout).Assembly,
+			typeof(FloatingActionButton).Assembly,
+			typeof(Toolbar).Assembly,
+			typeof(DrawerLayout).Assembly,
+			typeof(ViewPager).Assembly,
+			typeof(MvxRecyclerView).Assembly,
+			typeof(MvxSwipeRefreshLayout).Assembly,
+		};
+
 		Context AppContext;
 
 		public static INC<bool> SetupComplete { get; } = new NC<bool> ();
-
-		public Setup(Context applicationContext) : base(applicationContext)
-		{
-			AppContext = applicationContext;
-		}
 
 		protected override async void InitializeIoC()
 		{
@@ -32,19 +44,19 @@ namespace KulGen.Droid
 
 			string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"appofmanythings.db3");
 
-			await Core.CommonSetup.SharedSetup (dbPath);
+			await CommonSetup.SharedSetup (dbPath);
 
 			SetupComplete.Value = true;
 		}
 
-		protected override IMvxApplication CreateApp()
+		protected override IMvxApplication CreateApp ()
 		{
-			return new App();
+			return new App ();
 		}
 
-		protected override IMvxTrace CreateDebugTrace()
+		protected override IMvxAndroidViewPresenter CreateViewPresenter ()
 		{
-			return new DebugTrace();
+			return new MvxAppCompatViewPresenter (AndroidViewAssemblies);
 		}
 	}
 }

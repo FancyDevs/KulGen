@@ -1,4 +1,4 @@
-﻿using SQLite;
+﻿using Akavache.Sqlite3.Internal;
 
 namespace KulGen.DataModels
 {

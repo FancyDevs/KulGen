@@ -7,8 +7,8 @@ using Android.Widget;
 using KulGen.Droid.Adapters.CombatTracker;
 using KulGen.ViewModels.CombatTracker;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Binding.Droid.BindingContext;
-using MvvmCross.Binding.Droid.Views;
+using MvvmCross.Platforms.Android.Binding.BindingContext;
+using MvvmCross.Platforms.Android.Binding.Views;
 
 namespace KulGen.Droid.Views.CombatTracker
 {
@@ -18,13 +18,14 @@ namespace KulGen.Droid.Views.CombatTracker
 		Theme = "@style/Theme.Main",
 		ScreenOrientation = ScreenOrientation.Portrait
 	)]
-	public class CombatTrackerView : NavigationBarView<CombatTrackerView, CombatTrackerViewModel>
+	public class CombatTrackerView : BaseView<CombatTrackerView, CombatTrackerViewModel>
 	{
 		protected override int LayoutResId => Resource.Layout.combat_tracker_layout;
 
 		MvxListView combatantList;
 		FloatingActionButton fabClear;
 		FloatingActionButton fabAdd;
+		RelativeLayout loading;
 
 		protected override void OnInitializeComponents ()
 		{
@@ -34,6 +35,7 @@ namespace KulGen.Droid.Views.CombatTracker
 			fabAdd = FindViewById<FloatingActionButton> (Resource.Id.fab_add);
 			fabClear = FindViewById<FloatingActionButton> (Resource.Id.fab_clear_checkboxes);
 			combatantList = FindViewById<MvxListView> (Resource.Id.list_combat);
+			loading = FindViewById<RelativeLayout> (Resource.Id.tracker_loading);
 
 			combatantList.Adapter = new CombatantAdapter (this, BindingContext as IMvxAndroidBindingContext);
 
@@ -43,8 +45,8 @@ namespace KulGen.Droid.Views.CombatTracker
 		protected override void SetupBindings (MvxFluentBindingDescriptionSet<CombatTrackerView, CombatTrackerViewModel> bindingSet)
 		{
 			bindingSet.Bind (combatantList).For (x => x.ItemsSource).To (vm => vm.CombatantList);
+			bindingSet.Bind (loading).For ("Visibility").To (vm => vm.Loading).WithConversion ("Visibility");
 			bindingSet.Bind (fabClear).For ("Visibility").To (vm => vm.IsCheckBoxInitiative).WithConversion ("Visibility");
-			base.SetupBindings (bindingSet);
 		}
 
 		public override bool OnCreateOptionsMenu (IMenu menu)

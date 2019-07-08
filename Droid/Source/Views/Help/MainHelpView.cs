@@ -15,7 +15,7 @@ namespace KulGen.Droid.Source.Views.Help
 		Theme = "@style/Theme.Main",
 		ScreenOrientation = ScreenOrientation.Portrait
 	)]
-	public class MainHelpView : NavigationBarView<MainHelpView, MainHelpViewModel>
+	public class MainHelpView : BaseView<MainHelpView, MainHelpViewModel>
 	{
 		protected override int LayoutResId => Resource.Layout.main_help_layout;
 
@@ -46,7 +46,6 @@ namespace KulGen.Droid.Source.Views.Help
 
 		protected override void SetupBindings (MvxFluentBindingDescriptionSet<MainHelpView, MainHelpViewModel> bindingSet)
 		{
-			base.SetupBindings (bindingSet);
 		}
 
 		protected override void OnResume ()

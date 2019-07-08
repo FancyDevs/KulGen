@@ -1,18 +1,21 @@
-﻿using System.Windows.Input;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using KulGen.Core;
 using KulGen.DataModels;
 using KulGen.Source.Util;
 using KulGen.ViewModels;
 using KulGen.ViewModels.EditCombatants;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.FieldBinding;
+using MvvmCross.Commands;
+using MvvmCross.Navigation;
+using MvvmCross.Plugin.FieldBinding;
 
 namespace KulGen.Adapters.CombatTracker
 {
 	public class CombatListItemModel : BaseViewModel
 	{
-		public ICommand EditItem { get { return new MvxCommand (DoEditItem); } }
-		public ICommand UpdateHealth { get { return new MvxCommand (DoUpdateHealth); } }
+		public ICommand EditItem { get { return new MvxAsyncCommand (DoEditItem); } }
+		public ICommand SetHeal { get { return new MvxCommand (DoSetHeal); } }
+		public ICommand SetDamage { get { return new MvxCommand (DoSetDamage); } }
 		public ICommand SetMaxHealth { get { return new MvxCommand (DoSetMaxHealth); } }
 		public ICommand MinusDamage { get { return new MvxCommand (DoMinusDamage); } }
 		public ICommand AddDamage { get { return new MvxCommand (DoAddDamage); } }
@@ -32,10 +35,10 @@ namespace KulGen.Adapters.CombatTracker
 
 		public Combatant combatant;
 
-		public CombatListItemModel (ILocalSettings settings, Combatant combatant) : base (settings)
+		public CombatListItemModel (ILocalSettings settings, IMvxNavigationService navigation, Combatant combatant) : base (settings, navigation)
 		{
 			this.combatant = combatant;
-			IsCheckBoxInitiative.Value = settings.GetSavedInitiate () == InitiativeOptions.Checkbox;
+			IsCheckBoxInitiative.Value = settings.InitiativeOption == InitiativeOptions.Checkbox;
 
 			Initiative.Value = combatant.Initiative;
 			CharacterName.Value = combatant.Name;
@@ -51,10 +54,10 @@ namespace KulGen.Adapters.CombatTracker
 			}
 		}
 
-		public void DoEditItem ()
+		public async Task DoEditItem ()
 		{
 			settings.CurrentCombatant = combatant;
-			ShowViewModel<EditCombatantViewModel> ();
+			await navigation.Navigate<EditCombatantViewModel> ();
 		}
 
 		void DoShowHideCombatWindow ()
@@ -69,7 +72,9 @@ namespace KulGen.Adapters.CombatTracker
 
 		void DoMinusDamage ()
 		{
-			Damage.Value--;
+			if(Damage.Value > 0){
+				Damage.Value--;
+			}
 		}
 
 		void DoAddDamage ()
@@ -77,9 +82,22 @@ namespace KulGen.Adapters.CombatTracker
 			Damage.Value++;
 		}
 
-		void DoUpdateHealth ()
+		void DoSetHeal ()
+		{
+			Health.Value = Health.Value + Damage.Value;
+			if(Health.Value > combatant.MaxHealth) {
+				Health.Value = combatant.MaxHealth;
+			}
+
+			UpdateCombatantHealth ();
+			DoShowHideCombatWindow ();
+		}
+
+		void DoSetDamage ()
 		{
 			Health.Value = Health.Value - Damage.Value;
+			if (Health.Value < 0) Health.Value = 0;
+
 			UpdateCombatantHealth ();
 			DoShowHideCombatWindow ();
 		}

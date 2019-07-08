@@ -105,6 +105,4 @@
                 android:inputType="textCapSentences" />
         </LinearLayout>
     </LinearLayout>
-    <include
-        layout="@layout/bottom_toolbar" />
 </RelativeLayout>

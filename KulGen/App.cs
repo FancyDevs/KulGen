@@ -1,6 +1,6 @@
 ﻿using KulGen.ViewModels.CombatTracker;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.Platform.IoC;
+using MvvmCross.IoC;
+using MvvmCross.ViewModels;
 
 namespace KulGen
 {
@@ -13,7 +13,7 @@ namespace KulGen
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterNavigationServiceAppStart<CombatTrackerViewModel>();
+			RegisterAppStart<CombatTrackerViewModel>();
         }
     }
 }

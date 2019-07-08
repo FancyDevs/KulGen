@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
+using Akavache;
+using Akavache.Sqlite3.Internal;
 using KulGen.DataModels;
 using KulGen.Source.Util;
-using SQLite;
 
 namespace KulGen.Core
 {
@@ -13,13 +15,9 @@ namespace KulGen.Core
 		SQLiteConnection SQLiteDatabase { get; set; }
 		List<Combatant> CombatantsList { get; set; }
 		Combatant CurrentCombatant { get; set; }
-		string MultiNpcCustomSuffix { get; }
-
-		MultiNpcSuffixOptions GetMultipleNpcOption ();
-		void SetMultipleNpcOption (MultiNpcSuffixOptions option);
-		InitiativeOptions GetSavedInitiate ();
-		void SetSavedInitiate (InitiativeOptions sort);
-		void SetMultiNpcCustomSuffix (string suffix);
+		InitiativeOptions InitiativeOption { get; set; }
+		MultiNpcSuffixOptions MultiNpcSuffixOption { get; set; }
+		string MultiNpcCustomSuffix { get; set; }
 	}
 
 	public class LocalSettings : ILocalSettings
@@ -27,15 +25,60 @@ namespace KulGen.Core
 		public SQLiteConnection SQLiteDatabase { get; set; }
 		public List<Combatant> CombatantsList { get; set; }
 		public Combatant CurrentCombatant { get; set; }
-		public string MultiNpcCustomSuffix { get; private set; }
 
-		MultiNpcSuffixOptions savedMultipleNpcOption;
-		InitiativeOptions savedInitiateSort;
+		//Persistent Values
+		MultiNpcSuffixOptions _savedMuliNpc;
+		public MultiNpcSuffixOptions MultiNpcSuffixOption
+		{
+			get {
+				return _savedMuliNpc;
+			}
+			set {
+				if (_savedMuliNpc == value) return;
+				_savedMuliNpc = value;
+				BlobCache.LocalMachine.InsertObject ("multipleNpcOption", value);
+			}
+		}
+
+		InitiativeOptions _savedInitiative;
+		public InitiativeOptions InitiativeOption
+		{
+			get {
+				return _savedInitiative;
+			}
+			set {
+				if (_savedInitiative == value) return;
+				_savedInitiative = value;
+				BlobCache.LocalMachine.InsertObject ("savedInitiative", value);
+			}
+		}
+
+		string _multiNpcCustomSuffix;
+		public string MultiNpcCustomSuffix
+		{
+			get {
+				return _multiNpcCustomSuffix;
+			}
+			set {
+				if (_multiNpcCustomSuffix == value) return;
+				_multiNpcCustomSuffix = value;
+				BlobCache.LocalMachine.InsertObject ("multiNpcCustomSuffix", value);
+			}
+		}
+		//End Persistent Values
 
 		public LocalSettings (string dbPath)
 		{
+			SetupCache ();
 			CreateDatabase (dbPath);
-			GetPersistantValues ();
+		}
+
+		async Task SetupCache ()
+		{
+			BlobCache.ApplicationName = "kulgen";
+			MultiNpcCustomSuffix = await BlobCache.LocalMachine.GetObject<String> ("multiNpcCustomSuffix");
+			InitiativeOption = await BlobCache.LocalMachine.GetObject<InitiativeOptions> ("savedInitiative");
+			MultiNpcSuffixOption = await BlobCache.LocalMachine.GetObject<MultiNpcSuffixOptions> ("multipleNpcOption");
 		}
 
 		public static async Task<LocalSettings> LoadLocalSettings (string dbPath)
@@ -52,83 +95,6 @@ namespace KulGen.Core
                 Debug.WriteLine(ex.Message);
             }
 			
-		}
-
-		void GetPersistantValues ()
-		{
-			switch (PersistantSettings.PersistantInitiativeSort) {
-				case 1:
-					savedInitiateSort = InitiativeOptions.Descending;
-					break;
-				case 2:
-					savedInitiateSort = InitiativeOptions.Ascending;
-					break;
-				case 3:
-					savedInitiateSort = InitiativeOptions.Checkbox;
-					break;
-			}
-
-			switch (PersistantSettings.PersistantMultipleNpcOption) {
-				case 1:
-					savedMultipleNpcOption = MultiNpcSuffixOptions.Numeric;
-					break;
-				case 2:
-					savedMultipleNpcOption = MultiNpcSuffixOptions.Alphabetic;
-					break;
-				case 3:
-					savedMultipleNpcOption = MultiNpcSuffixOptions.Custom;
-					break;
-			}
-
-			MultiNpcCustomSuffix = PersistantSettings.MultipleNpcCustomSuffix;
-		}
-
-		public InitiativeOptions GetSavedInitiate ()
-		{
-			return savedInitiateSort;
-		}
-
-		public void SetSavedInitiate (InitiativeOptions sort)
-		{
-			savedInitiateSort = sort;
-			switch (sort) {
-				case InitiativeOptions.Descending:
-					PersistantSettings.PersistantInitiativeSort = 1;
-					break;
-				case InitiativeOptions.Ascending:
-					PersistantSettings.PersistantInitiativeSort = 2;
-					break;
-				case InitiativeOptions.Checkbox:
-					PersistantSettings.PersistantInitiativeSort = 3;
-					break;
-			}
-		}
-
-		public MultiNpcSuffixOptions GetMultipleNpcOption ()
-		{
-			return savedMultipleNpcOption;
-		}
-
-		public void SetMultipleNpcOption (MultiNpcSuffixOptions option)
-		{
-			savedMultipleNpcOption = option;
-			switch (option) {
-				case MultiNpcSuffixOptions.Numeric:
-					PersistantSettings.PersistantMultipleNpcOption = 1;
-					break;
-				case MultiNpcSuffixOptions.Alphabetic:
-					PersistantSettings.PersistantMultipleNpcOption = 2;
-					break;
-				case MultiNpcSuffixOptions.Custom:
-					PersistantSettings.PersistantMultipleNpcOption = 3;
-					break;
-			}
-		}
-
-		public void SetMultiNpcCustomSuffix (string suffix)
-		{
-			MultiNpcCustomSuffix = suffix;
-			PersistantSettings.MultipleNpcCustomSuffix = suffix;
 		}
 	}
 }

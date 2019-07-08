@@ -30,8 +30,11 @@ namespace KulGen.Droid.Adapters.CombatTracker
 			}
 		}
 
-		TextView TextUpdate;
-		TextView TextSetMaxHealth;
+		TextView TextReset;
+		TextView TextEdit;
+		TextView TextDoHeal;
+		TextView TextDoDamage;
+
 		TextView TextInitiative;
 		TextView TextCharacterName;
 		TextView TextPlayerName;
@@ -61,16 +64,20 @@ namespace KulGen.Droid.Adapters.CombatTracker
 			Clickable = true;
 			Content = LayoutInflater.From (context).Inflate (TemplateId, this, true);
 
-			TextUpdate = FindViewById<TextView> (Resource.Id.change_health_update);
-			TextSetMaxHealth = FindViewById<TextView> (Resource.Id.change_health_max_health);
+			//Buttons
+			TextReset = FindViewById<TextView> (Resource.Id.reset_character);
+			TextEdit = FindViewById<TextView> (Resource.Id.edit_character);
+			TextDoHeal = FindViewById<TextView> (Resource.Id.heal_character);
+			TextDoDamage = FindViewById<TextView> (Resource.Id.damage_character);
+			TextMinusDamage = FindViewById<TextView> (Resource.Id.change_health_minus);
+			TextPlusDamage = FindViewById<TextView> (Resource.Id.change_health_plus);
+
 			TextInitiative = FindViewById<TextView> (Resource.Id.text_initiative);
 			TextCharacterName = FindViewById<TextView> (Resource.Id.text_character_name);
 			TextPlayerName = FindViewById<TextView> (Resource.Id.text_player_name);
 			TextArmorClass = FindViewById<TextView> (Resource.Id.text_armor_class);
 			TextPassivePerception = FindViewById<TextView> (Resource.Id.text_passive_perception);
 			TextHealth = FindViewById<TextView> (Resource.Id.text_health);
-			TextMinusDamage = FindViewById<TextView> (Resource.Id.change_health_minus);
-			TextPlusDamage = FindViewById<TextView> (Resource.Id.change_health_plus);
 			EditDamage = FindViewById<EditText> (Resource.Id.change_health_amount);
 			ImgCombatWindow = FindViewById<ImageView> (Resource.Id.img_combat_window);
 			LayoutEditBox = FindViewById<LinearLayout> (Resource.Id.layout_edit_box);
@@ -96,8 +103,10 @@ namespace KulGen.Droid.Adapters.CombatTracker
 				set.Bind (checkBoxInitiative).For (checkBoxInitiative.ClickEvent ()).To (vm => vm.CombatantHasGone);
 				set.Bind (TextMinusDamage).For (TextMinusDamage.ClickEvent ()).To (vm => vm.MinusDamage);
 				set.Bind (TextPlusDamage).For (TextPlusDamage.ClickEvent ()).To (vm => vm.AddDamage);
-				set.Bind (TextUpdate).For (TextUpdate.ClickEvent ()).To (vm => vm.UpdateHealth);
-				set.Bind (TextSetMaxHealth).For (TextSetMaxHealth.ClickEvent ()).To (vm => vm.SetMaxHealth);
+				set.Bind (TextEdit).For (TextEdit.ClickEvent ()).To (vm => vm.EditItem);
+				set.Bind (TextDoHeal).For (TextDoHeal.ClickEvent ()).To (vm => vm.SetHeal);
+				set.Bind (TextDoDamage).For (TextDoDamage.ClickEvent ()).To (vm => vm.SetDamage);
+				set.Bind (TextReset).For (TextReset.ClickEvent ()).To (vm => vm.SetMaxHealth);
 				set.Bind (ImgCombatWindow).For (ImgCombatWindow.ClickEvent ()).To (vm => vm.ShowHideCombatWindow);
 				set.Bind (LayoutEditBox).For (LayoutEditBox.ClickEvent ()).To (vm => vm.EditItem);
 				set.Apply ();

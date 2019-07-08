@@ -6,8 +6,8 @@ using Android.Support.V4.Content;
 using Android.Views;
 using KulGen.Adapters.CombatTracker;
 using KulGen.Droid.MvxBindings;
-using MvvmCross.Binding.Droid.BindingContext;
-using MvvmCross.Binding.Droid.Views;
+using MvvmCross.Platforms.Android.Binding.BindingContext;
+using MvvmCross.Platforms.Android.Binding.Views;
 
 namespace KulGen.Droid.Adapters.CombatTracker
 {
@@ -27,13 +27,7 @@ namespace KulGen.Droid.Adapters.CombatTracker
 
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
-			View view;
-
-			if (convertView == null){
-				view = LayoutInflater.FromContext(context).Inflate(ItemTemplateId, null);
-			} else {
-				view = base.GetView(position, convertView, parent);
-			}
+			var view = base.GetView(position, convertView, parent);
 
 			if (position % 2 == 1) {
 				view.SetBackgroundColor(new Color(ContextCompat.GetColor(context, Resource.Color.secondary_color)));

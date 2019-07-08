@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using KulGen.ViewModels;
-using MvvmCross.Core.ViewModels;
+﻿using System.Collections.Generic;
+using MvvmCross.ViewModels;
 
 namespace KulGen.ViewModels
 {

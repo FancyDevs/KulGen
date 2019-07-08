@@ -56,6 +56,4 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <include
-        layout="@layout/bottom_toolbar" />
 </Linearlayout>

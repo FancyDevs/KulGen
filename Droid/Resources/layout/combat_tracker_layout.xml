@@ -9,13 +9,10 @@
         style="@style/MvxListViewParent"
         android:layout_below="@+id/toptoolbar"
         android:layout_above="@+id/bottomtoolbar">
-        <Mvx.MvxListView
+        <MvxListView
             style="@style/MvxListViewStyle"
-            android:id="@+id/list_combat"
-            app:MvxItemTemplate="@layout/combat_item" />
+            android:id="@+id/list_combat" />
     </RelativeLayout>
-    <include
-        layout="@layout/bottom_toolbar" />
     <android.support.design.widget.FloatingActionButton
         style="@style/CombatFloatingButton"
         android:id="@+id/fab_add"
@@ -32,5 +29,11 @@
         android:layout_marginLeft="15dp"
         app:backgroundTint="@color/primary_color"
         android:src="@drawable/ic_fab_uncheck"
+        android:visibility="gone" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:id="@+id/tracker_loading"
         android:visibility="gone" />
 </RelativeLayout>

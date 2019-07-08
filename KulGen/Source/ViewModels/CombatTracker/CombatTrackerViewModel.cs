@@ -1,36 +1,44 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using KulGen.Adapters;
+using Akavache.Sqlite3.Internal;
 using KulGen.Adapters.CombatTracker;
 using KulGen.Core;
+using KulGen.Core.Util;
 using KulGen.DataModels;
 using KulGen.Resources;
 using KulGen.Source.Util;
 using KulGen.ViewModels.AddCombatants;
 using KulGen.ViewModels.Help;
 using KulGen.ViewModels.Options;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.FieldBinding;
-using SQLite;
+using MvvmCross.Base;
+using MvvmCross.Commands;
+using MvvmCross.Navigation;
+using MvvmCross.Plugin.FieldBinding;
 
 namespace KulGen.ViewModels.CombatTracker
 {
-	public class CombatTrackerViewModel : NavigationBarViewModel
+	public class CombatTrackerViewModel : BaseViewModel
 	{
-		public ICommand AddCombatItem { get { return new MvxCommand (DoAddCombatItem); } }
-		public ICommand UpdateCombatantList { get { return new MvxCommand (DoUpdateCombatantList); } }
-		public ICommand ClearCombatants { get { return new MvxCommand (DoClearCombatants); } }
-		public ICommand GoToOptions { get { return new MvxCommand (DoGoToOptions); } }
-		public ICommand GoToHelp { get { return new MvxCommand (DoGoToHelp); } }
+		public ICommand AddCombatItem { get { return new MvxAsyncCommand (DoAddCombatItem); } }
+		public ICommand UpdateCombatantList { get { return new MvxAsyncCommand (DoUpdateCombatantList); } }
+		public ICommand ClearCombatants { get { return new MvxAsyncCommand (DoClearCombatants); } }
+		public ICommand GoToOptions { get { return new MvxAsyncCommand (DoGoToOptions); } }
+		public ICommand GoToHelp { get { return new MvxAsyncCommand (DoGoToHelp); } }
 		public ICommand ClearCheckBoxes { get { return new MvxCommand (DoClearCheckBoxes); } }
 
-		public INCList<CombatListItemModel> CombatantList = new NCList<CombatListItemModel> ();
+		public ImprovedObservableCollection<CombatListItemModel> CombatantList { get; }= new ImprovedObservableCollection<CombatListItemModel> ();
+
 		public INC<bool> IsCheckBoxInitiative = new NC<bool> ();
 
 		public string Title => AppStrings.ct_title;
 
-		public CombatTrackerViewModel (ILocalSettings settings) : base (settings)
+		readonly IMvxMainThreadAsyncDispatcher mainThread;
+
+		public CombatTrackerViewModel (ILocalSettings settings, IMvxNavigationService navigation, IMvxMainThreadAsyncDispatcher mainThread) : base (settings, navigation)
 		{
+			this.mainThread = mainThread;
 		}
 
 		public override void ViewAppeared ()
@@ -39,19 +47,20 @@ namespace KulGen.ViewModels.CombatTracker
 			DoUpdateCombatantList ();
 		}
 
-		void DoAddCombatItem ()
+		async Task DoAddCombatItem ()
 		{
-			ShowViewModel<AddCombatantViewModel> ();
+			await navigation.Navigate<AddCombatantViewModel> ();
 		}
 
-		void DoUpdateCombatantList ()
+		async Task DoUpdateCombatantList ()
 		{
-			IsCheckBoxInitiative.Value = settings.GetSavedInitiate () == InitiativeOptions.Checkbox;
-			var combatantList = new List<CombatListItemModel> ();
+			Loading.Value = true;
+
+			IsCheckBoxInitiative.Value = settings.InitiativeOption == InitiativeOptions.Checkbox;
 
 			//Figure out which sort order is needed from the settings
 			TableQuery<Combatant> combatantTableSorted = null;
-			switch (settings.GetSavedInitiate ()) {
+			switch (settings.InitiativeOption) {
 				case InitiativeOptions.Descending:
 					combatantTableSorted = settings.SQLiteDatabase.Table<Combatant> ().OrderByDescending (x => x.Initiative);
 					break;
@@ -63,32 +72,41 @@ namespace KulGen.ViewModels.CombatTracker
 					break;
 			}
 
-			foreach (Combatant c in combatantTableSorted) {
-				combatantList.Add (new CombatListItemModel (settings, c));
+			await mainThread.ExecuteOnMainThreadAsync (() => {
+				CombatantList.Clear ();
+				foreach (var c in combatantTableSorted) {
+					CombatantList.Add (new CombatListItemModel (settings, navigation, c));
+				}
+			});
+
+			Loading.Value = false;
+		}
+
+		async Task DoClearCombatants ()
+		{
+			var list = settings.SQLiteDatabase.Table<Combatant> ();
+			foreach(var combatant in list) {
+				if(!combatant.IsPlayer){
+					settings.SQLiteDatabase.Delete (combatant);
+				}
 			}
 
-			CombatantList.Value = combatantList;
+			await DoUpdateCombatantList ();
 		}
 
-		void DoClearCombatants ()
+		async Task DoGoToOptions ()
 		{
-			settings.SQLiteDatabase.DeleteAll<Combatant> ();
-			CombatantList.Value = new List<CombatListItemModel> ();
+			await navigation.Navigate<MainOptionsViewModel> ();
 		}
 
-		void DoGoToOptions ()
+		async Task DoGoToHelp()
 		{
-			ShowViewModel<MainOptionsViewModel> ();
-		}
-
-		void DoGoToHelp()
-		{
-			ShowViewModel<MainHelpViewModel> ();
+			await navigation.Navigate<MainHelpViewModel> ();
 		}
 
 		void DoClearCheckBoxes ()
 		{
-			foreach (CombatListItemModel c in CombatantList.Value) {
+			foreach (CombatListItemModel c in CombatantList) {
 				c.HasGone.Value = false;
 				c.combatant.HasGone = false;
 				settings.SQLiteDatabase.Update (c.combatant);

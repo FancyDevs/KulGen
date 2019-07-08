@@ -1,14 +1,16 @@
-﻿using System.Windows.Input;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using KulGen.Core;
 using KulGen.DataModels;
 using KulGen.Resources;
 using KulGen.ViewModels.CombatTracker;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.FieldBinding;
+using MvvmCross.Commands;
+using MvvmCross.Navigation;
+using MvvmCross.Plugin.FieldBinding;
 
 namespace KulGen.ViewModels.EditCombatants
 {
-	public class EditCombatantViewModel : NavigationBarViewModel
+	public class EditCombatantViewModel : BaseViewModel
 	{
 		public readonly INC<string> CharacterName = new NC<string> ();
 		public readonly INC<string> PlayerName = new NC<string> ();
@@ -18,8 +20,8 @@ namespace KulGen.ViewModels.EditCombatants
 		public readonly INC<int> PassivePerception = new NC<int> ();
 		public readonly INC<bool> IsPlayer = new NC<bool> ();
 
-		public ICommand UpdateClicked => new MvxCommand (DoUpdate);
-		public ICommand DeleteClicked => new MvxCommand (DoDelete);
+		public ICommand UpdateClicked => new MvxAsyncCommand (DoUpdate);
+		public ICommand DeleteClicked => new MvxAsyncCommand (DoDelete);
 
 		public string Title => AppStrings.edit_title;
 		public string PlayerText => AppStrings.add_edit_player;
@@ -34,7 +36,7 @@ namespace KulGen.ViewModels.EditCombatants
 
 		Combatant combatant;
 
-		public EditCombatantViewModel (ILocalSettings settings) : base (settings) {
+		public EditCombatantViewModel (ILocalSettings settings, IMvxNavigationService navigation) : base (settings, navigation) {
 			combatant = settings.CurrentCombatant;
 		}
 
@@ -51,7 +53,7 @@ namespace KulGen.ViewModels.EditCombatants
 			}
 		}
 
-		void DoUpdate ()
+		async Task DoUpdate ()
 		{
 			combatant.Name = CharacterName.Value;
 			combatant.IsPlayer = IsPlayer.Value;
@@ -62,13 +64,13 @@ namespace KulGen.ViewModels.EditCombatants
 			combatant.PassivePerception = PassivePerception.Value;
 
 			settings.SQLiteDatabase.Update (combatant);
-			ShowViewModel<CombatTrackerViewModel> ();
+			await navigation.Navigate<CombatTrackerViewModel> ();
 		}
 
-		void DoDelete ()
+		async Task DoDelete ()
 		{
 			settings.SQLiteDatabase.Delete (combatant);
-			ShowViewModel<CombatTrackerViewModel> ();
+			await navigation.Navigate<CombatTrackerViewModel> ();
 		}
 	}
 }

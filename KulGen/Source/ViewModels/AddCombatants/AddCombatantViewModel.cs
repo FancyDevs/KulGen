@@ -1,15 +1,17 @@
-﻿using System.Windows.Input;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using KulGen.Core;
 using KulGen.DataModels;
 using KulGen.Resources;
 using KulGen.Source.Util;
 using KulGen.ViewModels.CombatTracker;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.FieldBinding;
+using MvvmCross.Commands;
+using MvvmCross.Navigation;
+using MvvmCross.Plugin.FieldBinding;
 
 namespace KulGen.ViewModels.AddCombatants
 {
-	public class AddCombatantViewModel : NavigationBarViewModel
+	public class AddCombatantViewModel : BaseViewModel
 	{
 		const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -22,7 +24,7 @@ namespace KulGen.ViewModels.AddCombatants
 		public readonly INC<int> CreateNumber = new NC<int> (1);
 		public readonly INC<bool> IsPlayer = new NC<bool> (false);
 
-		public ICommand AddClicked => new MvxCommand (DoAdd);
+		public ICommand AddClicked => new MvxAsyncCommand (DoAdd);
 
 		public string Title => AppStrings.add_title;
 		public string PlayerText => AppStrings.add_edit_player;
@@ -35,9 +37,9 @@ namespace KulGen.ViewModels.AddCombatants
 		public string NumberText => AppStrings.add_edit_number;
 		public string PlayerNameText => AppStrings.add_edit_player_name;
 
-		public AddCombatantViewModel (ILocalSettings settings) : base (settings) { }
+		public AddCombatantViewModel (ILocalSettings settings, IMvxNavigationService navigation) : base (settings, navigation) { }
 
-		void DoAdd ()
+		async Task DoAdd ()
 		{
 			if (!IsPlayer.Value) {
 				AddNPC ();
@@ -45,7 +47,7 @@ namespace KulGen.ViewModels.AddCombatants
 				AddPlayer ();
 			}
 
-			ShowViewModel<CombatTrackerViewModel> ();
+			await navigation.Navigate<CombatTrackerViewModel> ();
 		}
 
 		void AddNPC ()
@@ -54,7 +56,7 @@ namespace KulGen.ViewModels.AddCombatants
 
 				//Check the settings for which suffix to add
 				var multiNpcSuffix = "";
-				switch (settings.GetMultipleNpcOption ()) {
+				switch (settings.MultiNpcSuffixOption) {
 					case MultiNpcSuffixOptions.Numeric:
 						multiNpcSuffix = x.ToString ();
 						break;

@@ -1,21 +1,22 @@
-﻿using System.Windows.Input;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using KulGen.Core;
 using KulGen.Resources;
 using KulGen.Source.Util;
-using KulGen.ViewModels;
-using MvvmCross.Core.ViewModels;
-using MvvmCross.FieldBinding;
+using MvvmCross.Commands;
+using MvvmCross.Navigation;
+using MvvmCross.Plugin.FieldBinding;
 
 namespace KulGen.ViewModels.Options
 {
-	public class MainOptionsViewModel : NavigationBarViewModel
+	public class MainOptionsViewModel : BaseViewModel
 	{
 		public readonly INC<InitiativeOptions> Initiative = new NC<InitiativeOptions> ();
 		public readonly INC<MultiNpcSuffixOptions> MultiNpcSuffix = new NC<MultiNpcSuffixOptions> ();
 		public readonly INC<bool> IsCustomNpcSuffix = new NC<bool> ();
 		public readonly INC<string> MultiNpcCustomSuffix = new NC<string> ();
 
-		public ICommand SaveOptions => new MvxCommand (DoSaveOptions);
+		public ICommand SaveOptions => new MvxAsyncCommand (DoSaveOptions);
 
 		public string Title => AppStrings.actionbar_options;
 		public string InitTitle => AppStrings.init_title;
@@ -28,20 +29,20 @@ namespace KulGen.ViewModels.Options
 		public string MultiNpcCustom => AppStrings.multi_npc_custom;
 		public string MultiNpcCustomHint => AppStrings.multi_npc_custom_hint;
 
-		public MainOptionsViewModel (ILocalSettings settings) : base (settings)
+		public MainOptionsViewModel (ILocalSettings settings, IMvxNavigationService navigation) : base (settings, navigation)
 		{
-			Initiative.Value = settings.GetSavedInitiate ();
-			MultiNpcSuffix.Value = settings.GetMultipleNpcOption ();
+			Initiative.Value = settings.InitiativeOption;
+			MultiNpcSuffix.Value = settings.MultiNpcSuffixOption;
 			IsCustomNpcSuffix.Value = MultiNpcSuffix.Value == MultiNpcSuffixOptions.Custom;
 			MultiNpcCustomSuffix.Value = settings.MultiNpcCustomSuffix;
 		}
 
-		void DoSaveOptions ()
+		async Task DoSaveOptions ()
 		{
-			settings.SetSavedInitiate (Initiative.Value);
-			settings.SetMultipleNpcOption (MultiNpcSuffix.Value);
-			settings.SetMultiNpcCustomSuffix (MultiNpcCustomSuffix.Value);
-			Close (this);
+			settings.InitiativeOption = Initiative.Value;
+			settings.MultiNpcSuffixOption = MultiNpcSuffix.Value;
+			settings.MultiNpcCustomSuffix = MultiNpcCustomSuffix.Value;
+			await navigation.Close (this);
 		}
 	}
 }

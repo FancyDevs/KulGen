@@ -14,7 +14,7 @@ namespace KulGen.Droid.Views.AddCombatants
 		NoHistory = true,
 		ScreenOrientation = ScreenOrientation.Portrait
 	)]
-	public class AddCombatantView : NavigationBarView<AddCombatantView, AddCombatantViewModel>
+	public class AddCombatantView : BaseView<AddCombatantView, AddCombatantViewModel>
 	{
 		protected override int LayoutResId => Resource.Layout.add_combatant_layout;
 
