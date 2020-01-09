@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/grey" />
+    <LinearLayout
+        android:id="@+id/bottom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <Space
+            style="@style/BottomToolbarSpace" />
+        <ImageButton
+            style="@style/BottomToolbarButtons"
+            android:src="@drawable/ic_combat"
+            android:id="@+id/button_navbar_combat" />
+        <Space
+            style="@style/BottomToolbarSpace" />
+        <ImageButton
+            style="@style/BottomToolbarButtons"
+            android:src="@drawable/ic_combat"
+            android:id="@+id/button_navbar_names" />
+        <Space
+            style="@style/BottomToolbarSpace" />
+    </LinearLayout>
+</LinearLayout>

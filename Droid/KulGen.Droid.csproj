@@ -214,6 +214,8 @@
     <Compile Include="Source\Adapters\CombatTracker\CombatantListAdapter.cs" />
     <Compile Include="Source\Adapters\CombatTracker\CombatListItem.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Source\Views\RandomNames\RandomNamesView.cs" />
+    <Compile Include="Source\NavigationBarView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -256,6 +258,8 @@
     <AndroidResource Include="Resources\drawable\ic_random_toolbar.png" />
     <AndroidResource Include="Resources\drawable\random_filter_button.xml" />
     <AndroidResource Include="Resources\drawable\ic_dropdown.png" />
+    <AndroidResource Include="Resources\layout\random_names_layout.xml" />
+    <AndroidResource Include="Resources\layout\bottom_navbar.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Source\" />
@@ -271,6 +275,7 @@
     <Folder Include="Source\Views\Options\" />
     <Folder Include="Source\Views\Help\" />
     <Folder Include="Source\Adapters\CombatTracker\" />
+    <Folder Include="Source\Views\RandomNames\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kulgen\Kulgen.csproj">

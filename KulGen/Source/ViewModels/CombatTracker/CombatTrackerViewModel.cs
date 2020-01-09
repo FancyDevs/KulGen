@@ -19,7 +19,7 @@ using MvvmCross.Plugin.FieldBinding;
 
 namespace KulGen.ViewModels.CombatTracker
 {
-	public class CombatTrackerViewModel : BaseViewModel
+	public class CombatTrackerViewModel : NavigationBarViewModel
 	{
 		public ICommand AddCombatItem { get { return new MvxAsyncCommand (DoAddCombatItem); } }
 		public ICommand UpdateCombatantList { get { return new MvxAsyncCommand (DoUpdateCombatantList); } }
@@ -28,7 +28,7 @@ namespace KulGen.ViewModels.CombatTracker
 		public ICommand GoToHelp { get { return new MvxAsyncCommand (DoGoToHelp); } }
 		public ICommand ClearCheckBoxes { get { return new MvxCommand (DoClearCheckBoxes); } }
 
-		public ImprovedObservableCollection<CombatListItemModel> CombatantList { get; }= new ImprovedObservableCollection<CombatListItemModel> ();
+		public ImprovedObservableCollection<CombatListItemModel> CombatantList { get; } = new ImprovedObservableCollection<CombatListItemModel> ();
 
 		public INC<bool> IsCheckBoxInitiative = new NC<bool> ();
 

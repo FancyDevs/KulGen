@@ -19,5 +19,17 @@
     <Compile Remove="Source\Adapters\RandomMagicItem\RandomMagicListItemModel.cs" />
     <Compile Remove="Source\ViewModels\RandomGenerators\RandomMagicItemViewModel.cs" />
     <Compile Remove="Properties\AssemblyInfo.cs" />
+    <Compile Remove="Source\DataModels\Combatant %28copy%29.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\" />
+    <Folder Include="Source\Services\" />
+    <Folder Include="Source\ViewModels\RandomNames\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\names_list.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\names_list.json" />
   </ItemGroup>
 </Project>

@@ -18,7 +18,7 @@ namespace KulGen.Droid.Views.CombatTracker
 		Theme = "@style/Theme.Main",
 		ScreenOrientation = ScreenOrientation.Portrait
 	)]
-	public class CombatTrackerView : BaseView<CombatTrackerView, CombatTrackerViewModel>
+	public class CombatTrackerView : NavigationBarView<CombatTrackerView, CombatTrackerViewModel>
 	{
 		protected override int LayoutResId => Resource.Layout.combat_tracker_layout;
 
@@ -44,6 +44,8 @@ namespace KulGen.Droid.Views.CombatTracker
 
 		protected override void SetupBindings (MvxFluentBindingDescriptionSet<CombatTrackerView, CombatTrackerViewModel> bindingSet)
 		{
+			base.SetupBindings (bindingSet);
+
 			bindingSet.Bind (combatantList).For (x => x.ItemsSource).To (vm => vm.CombatantList);
 			bindingSet.Bind (loading).For ("Visibility").To (vm => vm.Loading).WithConversion ("Visibility");
 			bindingSet.Bind (fabClear).For ("Visibility").To (vm => vm.IsCheckBoxInitiative).WithConversion ("Visibility");

@@ -3,16 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include
-        layout="@layout/top_toolbar" />
-    <RelativeLayout
-        style="@style/MvxListViewParent"
-        android:layout_below="@+id/toptoolbar"
-        android:layout_above="@+id/bottomtoolbar">
-        <MvxListView
-            style="@style/MvxListViewStyle"
-            android:id="@+id/list_combat" />
-    </RelativeLayout>
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+		android:orientation="vertical">
+	    <include
+	        layout="@layout/top_toolbar" />
+	    <RelativeLayout
+	        style="@style/MvxListViewParent"
+	        android:layout_below="@+id/toptoolbar"
+	        android:layout_above="@+id/bottomtoolbar"
+			android:layout_weight="1">
+	        <MvxListView
+	            style="@style/MvxListViewStyle"
+	            android:id="@+id/list_combat" />
+	    </RelativeLayout>
+	    <include
+	        layout="@layout/bottom_navbar" />
+	</LinearLayout>
     <android.support.design.widget.FloatingActionButton
         style="@style/CombatFloatingButton"
         android:id="@+id/fab_add"
